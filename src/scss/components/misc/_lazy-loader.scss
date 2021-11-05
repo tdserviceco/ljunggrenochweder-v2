@@ -1,0 +1,30 @@
+@use "../../abstracts/" as *;
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.5);
+  }
+
+  75% {
+    transform: scale(1.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.lazyLoader {
+  @include flex-columns-center;
+  width: 100%;
+  min-height: 100vh;
+  &.pulse {
+    img {
+      transform: scale(1);
+      animation: 2s pulse infinite ease-in-out;
+      animation-fill-mode: forwards;
+    }
+  }
+}
