@@ -86,3 +86,6 @@
     bottom: -100rem;
   }
 }
+
+@mixin transition-bottom-smooth($calc: false, $calcWidth: 0) {
+}
