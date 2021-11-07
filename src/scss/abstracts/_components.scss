@@ -1,8 +1,0 @@
-@mixin error-sign($calc: false, $width: 100%) {
-  @if $calc == true {
-    width: calc(100% - $width);
-  } @else {
-    width: $width;
-  }
-  //Build this so its complete.
-}

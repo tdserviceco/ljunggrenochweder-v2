@@ -1,11 +1,11 @@
 import React from 'react';
 
-const NoMatch = () => {
+const Admin = () => {
   return (
     <div>
-      404
+      Admin
     </div>
   );
 };
 
-export default NoMatch;
+export default Admin;
