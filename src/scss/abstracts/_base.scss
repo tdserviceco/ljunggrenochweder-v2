@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;0,600;0,700;0,900;1,200&display=swap");
+
+$h1: 3rem;
+$h2: 2rem;
+$h3: 1.5rem;
+$h4: 1rem;
+$h5: 0.5rem;
+$font-family: "Titillium Web", sans-serif;
+@mixin background($background) {
+  background: $background;
+}
