@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Registration from './pages/Registration';
 import Admin from './pages/Admin';
 import AdminLogin from './pages/AdminLogin';
+import Footer from './components/footer/footer';
 import NoMatch from './pages/NoMatch';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route exact path="/admin/login" element={<AdminLogin />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

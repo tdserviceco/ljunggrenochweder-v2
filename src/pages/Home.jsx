@@ -3,7 +3,6 @@ import { GoogleLogin } from 'react-google-login';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Header from '../components/header/Header';
-import Footer from '../components/footer/footer';
 import axios from 'axios';
 const Home = () => {
   const navigate = useNavigate()
@@ -22,20 +21,21 @@ const Home = () => {
   }
 
   return (
-    <section className="home">
+    <>
       <Header />
-      <GoogleLogin
-        clientId={import.meta.env.VITE_APP_GID}
-        buttonText="Login"
-        render={renderProps => (
-          <button onClick={renderProps.onClick} disabled={renderProps.disabled}><Icon icon="flat-color-icons:google" />This is my custom Google button</button>
-        )}
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-      />
-      <Footer />
-    </section>
+      <section className="home">
+        <GoogleLogin
+          clientId={import.meta.env.VITE_APP_GID}
+          buttonText="Login"
+          render={renderProps => (
+            <button onClick={renderProps.onClick} ><Icon icon="flat-color-icons:google" />This is my custom Google button</button>
+          )}
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+        />
+      </section>
+    </>
   );
 };
 
