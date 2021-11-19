@@ -1,0 +1,30 @@
+@custom-media --viewport-small-screen (min-width: 72rem);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+
+::placeholder {
+  color: yellow;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+@support(-webkit-touch-callout) {
+  /* IOS safari only */
+}
+
+body {
+  background: pink;
+
+  @media(--viewport-large) {
+    background: blue;
+  }
+
+}

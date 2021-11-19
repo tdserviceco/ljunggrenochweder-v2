@@ -1,0 +1,3 @@
+@define calcWidth $width {
+  width: calc(100% - $width);
+}
