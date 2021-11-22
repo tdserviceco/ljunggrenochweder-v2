@@ -1,11 +1,9 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
-import { useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Header from '../components/header/Header';
 import axios from 'axios';
 const Home = () => {
-  const navigate = useNavigate()
   const responseGoogle = (response) => {
     if (response.profileObj.googleId) {
       console.log(typeof (response.profileObj.email))
@@ -14,28 +12,26 @@ const Home = () => {
         console.log(res.data)
       }).catch(err => {
         if (err.response) {
-          navigate('/registration')
+          //
         }
       })
     }
   }
 
   return (
-    <>
-      <Header />
-      <section className="home">
-        <GoogleLogin
-          clientId={import.meta.env.VITE_APP_GID}
-          buttonText="Login"
-          render={renderProps => (
-            <button onClick={renderProps.onClick} ><Icon icon="flat-color-icons:google" />This is my custom Google button</button>
-          )}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
-        />
-      </section>
-    </>
+    <section className="home">
+      <GoogleLogin
+        clientId={import.meta.env.VITE_APP_GID}
+        buttonText="Login"
+        render={renderProps => (
+          <button onClick={renderProps.onClick} ><Icon icon="flat-color-icons:google" />This is my custom Google button</button>
+        )}
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={'single_host_origin'}
+      />
+      <h1>MAIN</h1>
+    </section>
   );
 };
 
