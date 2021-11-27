@@ -1,38 +1,25 @@
-import { ReactLocation, Router } from 'react-location'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/header/Header';
 import Home from './pages/Home'
 import AdminLogin from './pages/AdminLogin';
+import Admin from './pages/Admin';
+import Register from './pages/Registration';
 import Footer from './components/footer/Footer';
 import NoMatch from './pages/NoMatch'
 
 const App = () => {
-  const reactLocation = new ReactLocation()
-
   return (
     <>
       <Header />
-      <Router
-        location={reactLocation}
-        routes={[
-          {
-            path: '/',
-            element: <Home />,
-          },
-          {
-            path: 'login',
-            children: [
-              {
-                path: '/',
-                element: <AdminLogin />
-              }
-            ]
-          },
-          {
-            path: '*',
-            element: <NoMatch />,
-          },
-        ]}
-      />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/login" element={<AdminLogin />} />
+          <Route path="/dashboard" element={<Admin />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </>
   )
