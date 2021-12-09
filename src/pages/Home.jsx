@@ -2,7 +2,7 @@ import React from 'react';
 const Home = () => {
   return (
     <main className="home" role="main">
-      Main
+      <h1>MAIN</h1>
     </main>
   );
 };

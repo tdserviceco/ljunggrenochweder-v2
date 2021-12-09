@@ -38,9 +38,6 @@ body {
 
   main {
     background-color: red;
-    .container {
-      @include containerMozaic;
-    }
   }
 
   section {

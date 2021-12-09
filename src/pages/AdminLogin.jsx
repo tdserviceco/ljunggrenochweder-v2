@@ -1,18 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { GoogleLogin } from 'react-google-login';
+import { useCookies } from 'react-cookie';
 import { Icon } from '@iconify/react';
 import axios from 'axios';
 
 const AdminLogin = () => {
   let navigate = useNavigate();
+  const [cookie, setCookie] = useCookies(['access']);
+  const domain = import.meta.env.VITE_APP_LOCAL ? import.meta.env.VITE_APP_LOCAL : import.meta.env.VITE_APP_HOST;
   const responseGoogle = (response) => {
+
     if (response.profileObj.googleId) {
       const data = { email: response.profileObj.email }
       console.log(response.profileObj.email, data)
 
-      const result = axios.post(`http://localhost:9000/.netlify/functions/api/v1/google-auth`, data)
+      const result = axios.post(`${domain}/google-auth`, data)
       result.then(res => {
+        console.log(res.data);
+        setCookie('access', res.data);
         navigate('/dashboard')
       }).catch(err => {
         if (err.response) {
@@ -22,8 +28,8 @@ const AdminLogin = () => {
     }
   }
   const formSubmit = (e) => {
-    e.preventDefault();
-    navigate('/dashboard')
+    //använd react-form här
+
   }
   return (
     <div>
