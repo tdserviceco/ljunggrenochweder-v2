@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 import { GoogleLogin } from 'react-google-login';
 import { useCookies } from 'react-cookie';
 import { Icon } from '@iconify/react';
@@ -7,8 +8,24 @@ import axios from 'axios';
 
 const AdminLogin = () => {
   let navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors }, getValues } = useForm();
   const [cookie, setCookie] = useCookies(['access']);
   const domain = import.meta.env.VITE_APP_LOCAL ? import.meta.env.VITE_APP_LOCAL : import.meta.env.VITE_APP_HOST;
+
+
+  const formSubmit = (data) => {
+    
+    const result = axios.post(`${domain}/auth`, data);
+ 
+     result.then(res => {
+       setCookie('access', res.data);
+       navigate('/dashboard')
+     }).catch(err => {
+       if (err.response) {
+         console.log(err.response)
+     }
+   })}
+
   const responseGoogle = (response) => {
 
     if (response.profileObj.googleId) {
@@ -27,19 +44,17 @@ const AdminLogin = () => {
       })
     }
   }
-  const formSubmit = (e) => {
-    //använd react-form här
-
-  }
+    
+  
   return (
-    <div>
-      <form onSubmit={formSubmit}>
+    <section className="login">
+      <form onSubmit={handleSubmit(formSubmit)}>
         <label htmlFor="email">
-          <input id="email" type="email" placeholder="Email" />
+          <input id="email" type="email" placeholder="Email" {...register('email')}/>
         </label>
 
         <label htmlFor="password">
-          <input id="password" type="password" placeholder="Password" />
+          <input id="password" type="password" placeholder="Password" {...register('password')}/>
         </label>
         <button type="submit">
           Login
@@ -57,7 +72,7 @@ const AdminLogin = () => {
         cookiePolicy={'single_host_origin'}
       />
       <Link to="/register">Register</Link>
-    </div>
+    </section>
   );
 };
 

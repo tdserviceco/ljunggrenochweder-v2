@@ -15,6 +15,7 @@ const Dashboard = () => {
   const logout = () => {
     console.log('logout')
     removeCookie('access');
+    removeCookie('G_AUTHUSER_H');
     navigate('/');
   }
 
