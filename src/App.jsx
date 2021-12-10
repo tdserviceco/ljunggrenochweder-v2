@@ -5,8 +5,9 @@ import AdminLogin from './pages/AdminLogin';
 import Dashboard from './pages/Dashboard';
 import Register from './pages/Registration';
 import Footer from './components/footer/Footer';
-import NoMatch from './pages/NoMatch'
 import CreateService from "./pages/CreateService";
+import Demo from './pages/Demo';
+import NoMatch from './pages/NoMatch'
 const App = () => {
   return (
     <>
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route exact path="/dashboard/create/service" element={<CreateService />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/calender" element={<Demo />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </BrowserRouter>
