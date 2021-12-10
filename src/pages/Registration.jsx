@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { Icon } from '@iconify/react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const Registration = () => {
 
@@ -13,6 +14,8 @@ const Registration = () => {
 
     result.then(res => {
       console.log(res.data)
+      // once registered save the cookie here!
+      navigate('/')
     }).catch(err => {
       if (err.response) {
         console.log(err.response)
