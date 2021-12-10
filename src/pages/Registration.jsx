@@ -2,12 +2,13 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { Icon } from '@iconify/react';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
 
   const domain = import.meta.env.VITE_APP_LOCAL ? import.meta.env.VITE_APP_LOCAL : ''
   const { register, handleSubmit, formState: { errors }, getValues } = useForm();
+  const navigate = useNavigate()
   const registerHandler = (data) => {
 
     const result = axios.post(`${domain}/users`, data);

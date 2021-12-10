@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { useCookies } from 'react-cookie';
 import { Icon } from '@iconify/react';
@@ -45,6 +45,7 @@ const AdminLogin = () => {
           Login
         </button>
       </form>
+
       <GoogleLogin
         clientId={import.meta.env.VITE_APP_GID}
         buttonText="Login"
@@ -55,6 +56,7 @@ const AdminLogin = () => {
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
       />
+      <Link to="/register">Register</Link>
     </div>
   );
 };
