@@ -1,23 +1,23 @@
 {
   "name": "Ljungrenochweder-v2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
+    "preview": "vite preview",
     "sass:watch": "sass --watch ./src/scss/_index.scss ./public/css/style.css --style=compressed --no-source-map"
   },
   "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "@iconify/react": "^3.0.1",
     "axios": "^0.24.0",
     "file-loader": "^6.2.0",
     "history": "^5.1.0",
     "i18next": "^21.4.0",
     "i18next-browser-languagedetector": "^6.1.2",
-    "react": "^17.0.0",
     "react-calendar": "^3.5.0",
     "react-cookie": "^4.1.1",
-    "react-dom": "^17.0.0",
     "react-google-login": "^5.2.2",
     "react-gravatar": "^2.6.3",
     "react-hook-form": "^7.19.1",
@@ -29,7 +29,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "1.0.5",
-    "vite": "^2.6.4"
+    "@vitejs/plugin-react": "^1.0.7",
+    "vite": "^2.7.2"
   }
 }
