@@ -1,15 +1,16 @@
 import React from 'react';
 import { CREATE_USER } from '../../GraphQL/Mutations';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
+
 const RegisterField = () => {
 	const { register, handleSubmit, formState: { errors }, getValues } = useForm();
 	const onSubmit = data => RegisterProcess(data);
+	const [createUser, { error }] = useMutation(CREATE_USER)
 
-	const [createUser, { data, loading, error }] = useMutation(CREATE_USER)
+	let navigate = useNavigate()
 
-	// let navigate = useNavigate()
 	const RegisterProcess = (data) => {
 		//Register process!
 		createUser({
@@ -19,8 +20,14 @@ const RegisterField = () => {
 				password: data.password
 			}
 		})
+
 		if (error) {
 			console.log(error)
+			alert(error.message)
+		}
+		else {
+			alert("user created")
+			navigate('/')
 		}
 	}
 	return (
