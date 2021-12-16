@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Headline from './Headline';
+import Gallery from './Gallery';
+import { useQuery, gql } from '@apollo/client'
+import { LOAD_ABOUT_PAGE } from '../../GraphQL/Queries';
+const AboutSection = () => {
+	const [aboutPage, updateAboutPage] = useState(null);
+	const { error, loading, data } = useQuery(LOAD_ABOUT_PAGE);
 
-const AboutSection = ({ status }) => {
-	const domain = import.meta.env.VITE_APP_DOMAIN;
-	const gallery = () =>
-		status.gallery.map((data, key) =>
-			<div className="container mosaic" key={data.id}>
-				<img src={`${domain}${data.image.data.attributes.formats.large.url}`} />
-				<h2 className='name'>{data.name}</h2>
-				<p className="info">{data.info}</p>
-			</div>
-		)
+	const fetchData = () => {
+		!loading && updateAboutPage(data.about.data.attributes)
+	}
 
+	const galleryMap = () => {
+		console.log()
+		aboutPage.gallery.map((d, key) => <div key={key} className='box'>
+			<h2>{d.name}</h2>
+			<p>{d.info}</p>
+			<img src={`${import.meta.env.VITE_APP_DOMAIN}${d.image.data.attributes.formats.small.url}`} alt={d.image.data.attributes.caption} />
+		</div>)
+	}
+
+
+
+	useEffect(() => {
+		fetchData()
+	}, [data])
 	return (
 		<section>
-			<h1>{status.title.headline}</h1>
-			<div className="gallery">
-				{gallery()}
-			</div>
+			{loading && <b>Fetching...</b>}
+			{!loading && aboutPage !== null &&
+				<>
+					<Headline title={aboutPage.title.headline} />
+					<Gallery gallery={aboutPage.gallery} />
+				</>
+			}
 		</section>
 	);
 };

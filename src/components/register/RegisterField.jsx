@@ -1,33 +1,27 @@
 import React from 'react';
-import axios from 'axios';
+import { CREATE_USER } from '../../GraphQL/Mutations';
+import { gql, useMutation } from '@apollo/client';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 const RegisterField = () => {
 	const { register, handleSubmit, formState: { errors }, getValues } = useForm();
 	const onSubmit = data => RegisterProcess(data);
-	const domain = import.meta.env.VITE_APP_REGISTER;
-	let navigate = useNavigate()
+
+	const [createUser, { data, loading, error }] = useMutation(CREATE_USER)
+
+	// let navigate = useNavigate()
 	const RegisterProcess = (data) => {
 		//Register process!
-		axios.post(domain, data, {
-			headers: {
-				'Content-Type': 'application/json'
-			},
-		}).then(res => {
-			setCookie('access', {
-				jwt: res.data.jwt,
+		createUser({
+			variables: {
 				username: data.username,
 				email: data.email,
-				firstname: data.firstname,
-				lastname: data.lastname,
-			})
-			navigate('/')
-		}).catch(error => {
-			if (error.response) {
-				console.log(error.response.data.error.message)
-				alert(error.response.data.error.message)
+				password: data.password
 			}
 		})
+		if (error) {
+			console.log(error)
+		}
 	}
 	return (
 		<form className="register-form" onSubmit={handleSubmit(onSubmit)}>
@@ -44,18 +38,6 @@ const RegisterField = () => {
 					<span>E-post</span>
 					<input type="email" id='email' {...register('email', { required: true })} placeholder='E-post' />
 					{errors.email && <span>This field is required</span>}
-				</label>
-			</div>
-			<div className='name-fields'>
-				<label htmlFor='firstname'>
-					<span>Förnamn</span>
-					<input type="text" id='firstname' {...register('firstname', { required: true })} placeholder='Förnamn' />
-					{errors.firstname && <span>This field is required</span>}
-				</label>
-				<label htmlFor='lastname'>
-					<span>Efternamn</span>
-					<input type="text" id='lastname' {...register('lastname', { required: true })} placeholder='Efternamn' />
-					{errors.lastname && <span>This field is required</span>}
 				</label>
 			</div>
 			<div className='password-fields'>
