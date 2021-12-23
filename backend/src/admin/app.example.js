@@ -20,7 +20,7 @@ export default {
       // 'pt',
       // 'ru',
       // 'sk',
-      'sv',
+      // 'sv',
       // 'th',
       // 'tr',
       // 'uk',
@@ -29,5 +29,7 @@ export default {
       // 'zh',
     ],
   },
-  bootstrap() { },
+  bootstrap(app) {
+    console.log(app);
+  },
 };
