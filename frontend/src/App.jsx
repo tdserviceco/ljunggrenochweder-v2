@@ -8,14 +8,9 @@ import {
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import Home from './pages/Home'
-import Login from './pages/Login';
-import Register from './pages/Register';
-import PageNotFound from './components/errors/PageNotFound';
 
-/** Apollo setup */
+import { Home, Register, PageNotFound, Login } from './containers';
+import { Header, Footer } from './components';
 //Error link handler
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -51,11 +46,6 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/dashboard/create/service" element={<CreateService />} />
-          <Route path="/demo" element={<Demo />} /> */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
