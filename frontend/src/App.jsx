@@ -9,7 +9,7 @@ import {
 import { onError } from '@apollo/client/link/error';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Home, Register, PageNotFound, Login } from './containers';
+import { Home, Register, Structure, PageNotFound } from './containers';
 import { Header, Footer } from './components';
 //Error link handler
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -34,18 +34,13 @@ const client = new ApolloClient({
 /**Apollo setup ends here */
 
 const App = () => {
-  const DisplayHeader = () => {
-    const url = window.location.pathname
-    if (url !== '/login') {
-      return <Header />
-    }
-  }
   return (
     <ApolloProvider client={client}>
-      {DisplayHeader()}
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route path="/structure" element={<Structure />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

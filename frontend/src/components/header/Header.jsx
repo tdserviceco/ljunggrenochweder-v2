@@ -1,9 +1,10 @@
 import React from 'react';
+import { Login } from '..';
 
 const Header = () => {
   return (
     <header>
-      HEADER
+      <Login />
     </header>
   );
 };
