@@ -1,9 +1,4 @@
 @use "../abstracts/" as *;
-html,
-body {
-	width: 100%;
-	min-height: 100vh;
-}
 
 body {
 	font-family: $font-family;
@@ -43,6 +38,7 @@ body {
 		width: 100%;
 		max-height: 5rem;
 		height: 100%;
+		z-index: 3;
 	}
 	footer {
 		background-color: yellow;

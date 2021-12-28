@@ -1,11 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollEffect } from '../../assets/custom-hooks';
 const Structure = () => {
+  const exampleFunc = useScrollEffect;
   useEffect(() => {
-
     document.title = 'Struktur av sidan!'
   })
   return (
@@ -17,23 +16,31 @@ const Structure = () => {
       <h5>This is the fifth level heading</h5>
       <h6>This is the sixth level heading</h6>
       <p>This is a paragraph with a few words.</p>
-      <div className={`read-more ${useScrollEffect(120, 'fade-in')}`}>
-        <p>This is a new paragraph. Its contents will start on a new line after the previous one. Again there is no limit to how many sentences this paragraph can contain. Note that the browser will ignore blank spaces        that         you        place        in       between        words       like this.
-          It will also ignore anything you start on a new line like this sentence.
-          And this one…
-          And also spaces you put before lines like with this one.
-        </p>
-        <p>But it will start this on a new line!</p>
-        <blockquote>
-          <p>Indents done like this will work instead. Note that you still need to use the paragraph tag to start it on a new line.</p>
-          <p>This is the next paragraph, and is also indented. Neat!</p>
-          <p>Remember, use the blockquote to indent something only if you can't use CSS. The true purpose of the blockquote element is to mark text that is a long quote!</p>
-        </blockquote>
-        <ul role="list">
-          A ul of role of list
-          <li>List item</li>
-          <li><Link to={"#"}>A list item with a Link</Link></li>
-        </ul>
+      <div className='scroll'>
+        <div className={`${exampleFunc(120, 'left', 'fade-in-left')}`}>
+          <p>This is a new paragraph. Its contents will start on a new line after the previous one. Again there is no limit to how many sentences this paragraph can contain. Note that the browser will ignore blank spaces        that         you        place        in       between        words       like this.
+            It will also ignore anything you start on a new line like this sentence.
+            And this one…
+            And also spaces you put before lines like with this one.
+          </p>
+          <p>But it will start this on a new line!</p>
+          <blockquote>
+            <p>Indents done like this will work instead. Note that you still need to use the paragraph tag to start it on a new line.</p>
+            <p>This is the next paragraph, and is also indented. Neat!</p>
+            <p>Remember, use the blockquote to indent something only if you can't use CSS. The true purpose of the blockquote element is to mark text that is a long quote!</p>
+          </blockquote>
+        </div>
+      </div>
+      <div className='scroll'>
+        <div className={`${useScrollEffect(287, 'right', 'fade-in-right', true)}`}>
+          <ul role="list">
+            UL with role of list
+            <li>
+              List item
+            </li>
+            <li><Link to="#">List item with a Link</Link></li>
+          </ul>
+        </div>
       </div>
     </section>
   );
