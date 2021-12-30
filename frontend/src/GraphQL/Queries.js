@@ -1,26 +1,14 @@
 import { gql } from "@apollo/client";
 
-const LOAD_ABOUT_PAGE = gql`query {
-  about {
+const STRUCTURE_EXAMPLE = gql`query getMediaByID($id: ID!){
+  uploadFile(id:$id){
     data {
-      id
       attributes {
-        title {headline}
-        gallery {
-          info
-          name
-          image {
-            data {
-              id
-              attributes {
-                formats
-              }
-            }
-          }
-        }
+        caption
+        formats
       }
     }
   }
 }`
 
-export { LOAD_ABOUT_PAGE }
+export { STRUCTURE_EXAMPLE }

@@ -6,21 +6,22 @@
     position: relative;
     z-index: 2;
     opacity: 0;
-    transition: all 250ms ease-in;
+    transition: all 750ms ease-in;
     z-index: 0;
+    &.fade-in {
+      opacity: 1;
+    }
   }
   .scroll-left {
     left: -20rem;
-    &.fade-in-left {
-      opacity: 1;
+    &.fade-in {
       left: 0;
     }
   }
 
   .scroll-right {
     right: -20rem;
-    &.fade-in-right {
-      opacity: 1;
+    &.fade-in {
       right: 0;
     }
   }

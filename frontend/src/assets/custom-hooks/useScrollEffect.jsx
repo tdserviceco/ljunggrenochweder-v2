@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-let useScrollEffect = (pos, direction, cssEffect, debug = false) => {
-  console.log("pos:", pos, "direction:", direction, "cssEffect: ", cssEffect, 'debug: ', debug)
+let useScrollEffect = (pos, direction = 'left', cssEffect = 'fade-in', debug = false) => {
+
   const [effect, setEffect] = useState(`scroll-${direction}`)
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -10,7 +10,6 @@ let useScrollEffect = (pos, direction, cssEffect, debug = false) => {
       }
       if (scrolled >= pos) {
         setEffect(`scroll-${direction} ${cssEffect}`);
-        console.log('postion: ', pos)
       }
       else {
         setEffect(`scroll-${direction}`)
