@@ -1,0 +1,10 @@
+@use "./abstracts/" as *;
+
+//Media for Base in responsive mode
+@media (min-width: 600px) {
+  body {
+    h1 {
+      font-size: $h1 + 0.5rem;
+    }
+  }
+}

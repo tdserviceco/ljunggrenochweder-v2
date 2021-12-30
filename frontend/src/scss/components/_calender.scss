@@ -1,0 +1,13 @@
+@use "../abstracts/" as *;
+.scheme {
+	.container {
+		@include container(grid);
+	}
+}
+
+.maps {
+	&,
+	iframe {
+		@include gmaps(100%, 100%);
+	}
+}

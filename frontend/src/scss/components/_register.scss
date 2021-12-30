@@ -1,0 +1,8 @@
+@use "../abstracts/" as *;
+
+.register {
+	margin-top: 5rem;
+	.btn {
+		@include submitBtn;
+	}
+}
