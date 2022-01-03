@@ -1,4 +1,4 @@
-@mixin sizeOfIcon($width) {
+@mixin sizeOfIcon($width, $height: auto) {
   width: $width;
-  height: 100%;
+  height: $height;
 }

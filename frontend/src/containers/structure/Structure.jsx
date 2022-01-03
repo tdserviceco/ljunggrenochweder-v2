@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import { useScrollEffect } from '../../assets/custom-hooks';
 import { useLazyQuery } from '@apollo/client'
@@ -58,6 +58,7 @@ const Structure = () => {
           </ul>
         </div>
       </div>
+      {loading && <Icon icon="eos-icons:rotating-gear" className='loading' />}
       {!loading && mediaData !== undefined &&
         <img
           src={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.small.hash}${mediaData.formats.small.ext}`}
