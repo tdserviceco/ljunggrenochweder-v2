@@ -14,6 +14,10 @@ const Structure = () => {
   const [mediaData, setMediaData] = useState(undefined)
 
   const getMedia = () => {
+    if (error) {
+      console.log(error)
+      return;
+    }
     !loading && setMediaData(data.uploadFile.data.attributes)
   }
 
@@ -31,22 +35,21 @@ const Structure = () => {
       <h5>This is the fifth level heading</h5>
       <h6>This is the sixth level heading</h6>
       <p>This is a paragraph with a few words.</p>
-      <div className='scroll'>
-        <div className={`${exampleFunc(10)}`}>
-          <p>This is a new paragraph. Its contents will start on a new line after the previous one. Again there is no limit to how many sentences this paragraph can contain. Note that the browser will ignore blank spaces        that         you        place        in       between        words       like this.
-            It will also ignore anything you start on a new line like this sentence.
-            And this one…
-            And also spaces you put before lines like with this one.
-          </p>
-          <p>But it will start this on a new line!</p>
-          <blockquote>
-            <p>Indents done like this will work instead. Note that you still need to use the paragraph tag to start it on a new line.</p>
-            <p>This is the next paragraph, and is also indented. Neat!</p>
-            <p>Remember, use the blockquote to indent something only if you can't use CSS. The true purpose of the blockquote element is to mark text that is a long quote!</p>
-          </blockquote>
-        </div>
 
-        <div className={`${useScrollEffect(10, 'right', 'fade-in')}`}>
+      <p>This is a new paragraph. Its contents will start on a new line after the previous one. Again there is no limit to how many sentences this paragraph can contain. Note that the browser will ignore blank spaces        that         you        place        in       between        words       like this.
+        It will also ignore anything you start on a new line like this sentence.
+        And this one…
+        And also spaces you put before lines like with this one.
+      </p>
+      <p>But it will start this on a new line!</p>
+      <blockquote>
+        <p>Indents done like this will work instead. Note that you still need to use the paragraph tag to start it on a new line.</p>
+        <p>This is the next paragraph, and is also indented. Neat!</p>
+        <p>Remember, use the blockquote to indent something only if you can't use CSS. The true purpose of the blockquote element is to mark text that is a long quote!</p>
+      </blockquote>
+
+      <div className='lazy-load-effect'>
+        <div className={`${useScrollEffect()} fade-in`}>
           <ul role="list">
             UL with role of list
             <li>
@@ -59,7 +62,8 @@ const Structure = () => {
         </div>
       </div>
       {loading && <Loader />}
-      {!loading && mediaData !== undefined &&
+      {
+        !loading && mediaData !== undefined &&
         <img
           loading='lazy'
           src={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.small.hash}${mediaData.formats.small.ext}`}
@@ -72,7 +76,21 @@ const Structure = () => {
         />
       }
 
-    </section>
+      <div className='lazy-load-effect'>
+        <div className={`${useScrollEffect('right')} fade-in`}>
+          <ul role="list">
+            UL with role of list 2
+            <li>
+              List item 2
+            </li>
+            <li>
+              <Link to="#">List item with a Link 2</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </section >
   );
 };
 

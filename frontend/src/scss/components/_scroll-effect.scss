@@ -1,27 +1,27 @@
-.scroll {
+.lazy-load-effect {
   overflow-x: hidden;
 
-  .scroll-left,
-  .scroll-right {
+  .left.fade-in,
+  .right.fade-in {
     position: relative;
     z-index: 2;
     opacity: 0;
     transition: all 750ms ease-in;
     z-index: 0;
-    &.fade-in {
+    &.appear {
       opacity: 1;
     }
   }
-  .scroll-left {
+  .left.fade-in {
     left: -20rem;
-    &.fade-in {
+    &.appear {
       left: 0;
     }
   }
 
-  .scroll-right {
+  .right.fade-in {
     right: -20rem;
-    &.fade-in {
+    &.appear {
       right: 0;
     }
   }
