@@ -56,6 +56,4 @@ p {
 	font-size: $p;
 }
 
-.loading {
-	@include sizeOfIcon(3.5rem);
-}
+@include loader;

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import { useScrollEffect } from '../../assets/custom-hooks';
-import { useLazyQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { STRUCTURE_EXAMPLE } from '../../GraphQL/Queries';
+import { Loader } from '../../components';
 
 const Structure = () => {
-  const [getMediaID, { loading, data, error }] = useLazyQuery(STRUCTURE_EXAMPLE, {
+  const { loading, data, error } = useQuery(STRUCTURE_EXAMPLE, {
     variables: {
       id: 1
     }
   });
   const [mediaData, setMediaData] = useState(undefined)
-  const getMedia = async () => {
-    await getMediaID();
-    !loading && data !== undefined && setMediaData(data.uploadFile.data.attributes)
+
+  const getMedia = () => {
+    !loading && setMediaData(data.uploadFile.data.attributes)
   }
 
   const exampleFunc = useScrollEffect;
@@ -58,9 +58,10 @@ const Structure = () => {
           </ul>
         </div>
       </div>
-      {loading && <Icon icon="eos-icons:rotating-gear" className='loading' />}
+      {loading && <Loader />}
       {!loading && mediaData !== undefined &&
         <img
+          loading='lazy'
           src={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.small.hash}${mediaData.formats.small.ext}`}
           srcSet={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.medium.hash}${mediaData.formats.medium.ext} 920w,
             ${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.large.hash}${mediaData.formats.large.ext} 1366w,
