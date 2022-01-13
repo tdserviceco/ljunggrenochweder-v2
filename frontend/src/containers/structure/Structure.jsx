@@ -77,7 +77,7 @@ const Structure = () => {
       }
 
       <div className='lazy-load-effect'>
-        <div className={`${useScrollEffect('-100px', 'right')} fade-in`}>
+        <div className={`${useScrollEffect('right', '-100px')} fade-in`}>
           <ul role="list">
             UL with role of list 2
             <li>

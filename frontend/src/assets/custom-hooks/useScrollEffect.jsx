@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-let useScrollEffect = (offset = '0px', direction = 'left', threshold = 0) => {
+let useScrollEffect = (direction = 'left', offset = '0px', threshold = 0) => {
   let offSetLeft = '0px';
   let offSetRight = '0px';
   let offSetTop = '0px';
@@ -33,9 +33,6 @@ let useScrollEffect = (offset = '0px', direction = 'left', threshold = 0) => {
       rootMargin: `${offSetTop} ${offSetRight} ${offSetBottom} ${offSetLeft}`
     };
 
-    console.log(effectOptions.rootMargin)
-
-
     const appearOnScroll = new IntersectionObserver(function (
       entries,
       appearOnScroll
@@ -53,7 +50,7 @@ let useScrollEffect = (offset = '0px', direction = 'left', threshold = 0) => {
     fadeIn.forEach(fader => {
       appearOnScroll.observe(fader);
     });
-    console.log(fadeIn)
+
   })
   return effect
 }
