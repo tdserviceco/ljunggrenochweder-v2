@@ -49,7 +49,7 @@ const Structure = () => {
       </blockquote>
 
       <div className='lazy-load-effect'>
-        <div className={`${useScrollEffect()} fade-in`}>
+        <div className={`${useScrollEffect('right')} right fade-in`}>
           <ul role="list">
             UL with role of list
             <li>
@@ -77,7 +77,7 @@ const Structure = () => {
       }
 
       <div className='lazy-load-effect'>
-        <div className={`${useScrollEffect('right', '-100px')} fade-in`}>
+        <div className={`${useScrollEffect('left')} left fade-in`}>
           <ul role="list">
             UL with role of list 2
             <li>

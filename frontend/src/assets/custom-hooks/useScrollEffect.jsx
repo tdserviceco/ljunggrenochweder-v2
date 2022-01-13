@@ -1,33 +1,31 @@
-import { useEffect, useState } from "react";
-let useScrollEffect = (direction = 'left', offset = '0px', threshold = 0) => {
+import { useEffect } from "react";
+let useScrollEffect = (direction, offset = '0px', threshold = 0) => {
   let offSetLeft = '0px';
   let offSetRight = '0px';
   let offSetTop = '0px';
   let offSetBottom = '0px';
-  const [effect, setEffect] = useState(`${direction}`)
   useEffect(() => {
     switch (direction) {
       case 'top':
-        setEffect(`${direction}`)
         offSetTop = offset;
         break;
 
       case 'right':
-        setEffect(`${direction}`)
         offSetRight = offset;
         break;
 
       case 'bottom':
-        setEffect(`${direction}`)
         offSetBottom = offset;
         break;
 
-      default:
-        setEffect(`${direction}`)
+      case 'left':
         offSetLeft = offset;
         break;
+
+      default:
+        break;
     }
-    let fadeIn = document.querySelectorAll(`.${direction}.fade-in`);
+    let fadeIn = document.querySelectorAll(`.fade-in`);
     const effectOptions = {
       threshold: [threshold],
       rootMargin: `${offSetTop} ${offSetRight} ${offSetBottom} ${offSetLeft}`
@@ -52,6 +50,6 @@ let useScrollEffect = (direction = 'left', offset = '0px', threshold = 0) => {
     });
 
   })
-  return effect
+  return
 }
 export default useScrollEffect;
