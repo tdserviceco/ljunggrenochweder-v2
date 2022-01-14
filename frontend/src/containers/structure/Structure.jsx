@@ -31,9 +31,6 @@ const Structure = () => {
       <h1>This is the main heading</h1>
       <h2>This is the second level heading</h2>
       <h3>This is the third level heading</h3>
-      <h4>This is the fourth level heading</h4>
-      <h5>This is the fifth level heading</h5>
-      <h6>This is the sixth level heading</h6>
       <p>This is a paragraph with a few words.</p>
 
       <p>This is a new paragraph. Its contents will start on a new line after the previous one. Again there is no limit to how many sentences this paragraph can contain. Note that the browser will ignore blank spaces        that         you        place        in       between        words       like this.
@@ -64,16 +61,18 @@ const Structure = () => {
       {loading && <Loader />}
       {
         !loading && mediaData !== undefined &&
-        <img
-          loading='lazy'
-          src={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.small.hash}${mediaData.formats.small.ext}`}
-          srcSet={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.medium.hash}${mediaData.formats.medium.ext} 920w,
-            ${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.large.hash}${mediaData.formats.large.ext} 1366w,
-          `}
-          sizes="(min-width: 920px) 920px,
-      (min-width: 1366px) 1366px"
-          alt={`${mediaData.caption}`}
-        />
+        <div style={{height: '400px', width: '600px'}}>
+          <img
+            loading='lazy'
+            src={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.small.hash}${mediaData.formats.small.ext}`}
+            srcSet={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.medium.hash}${mediaData.formats.medium.ext} 920w,
+              ${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.large.hash}${mediaData.formats.large.ext} 1366w,
+            `}
+            sizes="(min-width: 920px) 920px,
+        (min-width: 1366px) 1366px"
+            alt={`${mediaData.caption}`}
+          />
+        </div>
       }
 
       <div className='lazy-load-effect'>

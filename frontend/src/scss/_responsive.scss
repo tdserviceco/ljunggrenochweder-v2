@@ -1,10 +1,37 @@
 @use "./abstracts/" as *;
 
-//Media for Base in responsive mode
+/* Tablet */
 @media (min-width: 600px) {
   body {
     h1 {
       font-size: $h1 + 0.5rem;
+    }
+    h2{
+      font-size: $h2 + 0.25rem;
+    }
+    h3{
+      font-size: $h3 + 0.125rem;
+    }
+    p{
+      font-size: $p + 0.125rem;
+    }
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  body {
+    h1 {
+      font-size: $h1 + 1.25rem;
+    }
+    h2{
+      font-size: $h2 + 0.75rem;
+    }
+    h3{
+      font-size: $h3 + 0.375rem;
+    }
+    p{
+      font-size: $p + 0.125rem;
     }
   }
 }
