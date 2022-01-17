@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client'
 import { useSelector, useDispatch } from 'react-redux';
-import { services, workersId } from '../../actions';
+import { services, serviceId } from '../../actions';
 import DisplayServices from './DisplayServices';
 
 import { GET_ALL_SERVICES_BASED_ON_CATEGORY_ID } from '../../GraphQL/Queries';
@@ -9,30 +9,29 @@ import { GET_ALL_SERVICES_BASED_ON_CATEGORY_ID } from '../../GraphQL/Queries';
 const StepTwo = () => {
 
   const dispatch = useDispatch();
-  const id = useSelector(state => state.serviceId);
+  const id = useSelector(state => state.categoryId);
 
   const { loading, data, error } = useQuery(GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, {
-     variables: {
-       id: id
-     }
+    variables: {
+      id: id
+    }
   });
 
-  const dataSelectWorker = (e) => {
-    dispatch(workersId(e.target.value))
-    
+  const dataSelectService = (e) => {
+    dispatch(serviceId(e.target.value))
   }
-  
+
   const fetchServices = () => {
     if (error) return console.log(error);
-     !loading && dispatch(services(data))
-   }
+    !loading && dispatch(services(data))
+  }
 
   useEffect(() => {
     fetchServices()
   }, [data])
 
-  return ( 
-    <select default="" onChange={dataSelectWorker}>
+  return (
+    <select default="" onChange={dataSelectService}>
       <option hidden value="">Välj tjänst</option>
       <DisplayServices />
     </select>

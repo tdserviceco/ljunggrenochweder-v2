@@ -5,6 +5,13 @@ export const catgories = data => {
   }
 };
 
+export const categoryId = id => {
+  return {
+    type: 'CATEGORYID',
+    value: Number(id)
+  }
+}
+
 export const serviceId = id => {
   return {
     type: 'SERVICEID',
@@ -26,9 +33,28 @@ export const workersId = id => {
   }
 }
 
+
+export const workers = data => {
+  return {
+    type: 'WORKERS',
+    value: data
+  }
+}
+
+
+
+export const workerTimeSchedule = data => {
+  return {
+    type: 'WORKERTIMESCHEDULE',
+    value: data
+  }
+}
+
 export const defaultBackground = data => {
   return {
     type: 'DEFAULTBACKGROUND',
     value: data
   }
 };
+
+

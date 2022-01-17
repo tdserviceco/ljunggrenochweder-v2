@@ -7,6 +7,16 @@ const categories = (state = null, action) => {
   }
 }
 
+const categoryId = (state = null, action) => {
+  switch (action.type) {
+    case 'CATEGORYID':
+      return action.value
+    default:
+      return state
+  }
+}
+
+
 const serviceId = (state = null, action) => {
   switch (action.type) {
     case 'SERVICEID':
@@ -26,13 +36,31 @@ const services = (state = null, action) => {
 }
 
 const workersId = (state = null, action) => {
-  switch ( action.type) {
+  switch (action.type) {
     case 'WORKERSID':
       return action.value
     default:
-    return state
+      return state
+  }
+}
+
+const workers = (state = null, action) => {
+  switch (action.type) {
+    case 'WORKERS':
+      return action.value
+    default:
+      return state
+  }
+}
+
+const workerTimeSchedule = (state = null, action) => {
+  switch (action.type) {
+    case 'WORKETIMESCHEDULE':
+      return action.value
+    default:
+      return state
   }
 }
 
 
-export { categories, serviceId, services, workersId };
+export { categories, categoryId, serviceId, services, workersId, workers, workerTimeSchedule };

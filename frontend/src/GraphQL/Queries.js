@@ -27,11 +27,12 @@ const GET_ALL_SERVICES_BASED_ON_CATEGORY_ID = gql`query getServiceByCategoryId($
   category(id:$id) {
     data {
       attributes {
-        services {
+        services(sort:"service:ASC") {
           data {
             id
             attributes {
               service
+              time
             }
           }
         }
@@ -44,9 +45,12 @@ const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id:
   service(id:$id) {
     data {
       attributes {
-        workers {
+        workers(sort:"name:ASC") {
           data {
             id
+            attributes {
+              name
+            }
           }
         }
       }

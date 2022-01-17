@@ -1,13 +1,16 @@
 import { combineReducers } from "redux";
 import { defaultBackground } from './theme/theme';
-import { categories, serviceId, services, workersId } from './booking/booking';
+import { categories, categoryId, serviceId, services, workersId, workers, workerTimeSchedule } from './booking/booking';
 
 const allReducer = combineReducers({
   defaultBackground: defaultBackground,
   categories: categories,
+  categoryId: categoryId,
   serviceId: serviceId,
   services: services,
-  workersId: workersId
+  workersId: workersId,
+  workers: workers,
+  workerTimeSchedule: workerTimeSchedule
 });
 
 export default allReducer
