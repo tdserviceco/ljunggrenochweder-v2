@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * schedule router.
+ * customer router.
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::schedule.schedule');
+module.exports = createCoreRouter('api::customer.customer');

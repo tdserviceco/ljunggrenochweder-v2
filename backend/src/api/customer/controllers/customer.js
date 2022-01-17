@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- *  booking controller
+ *  customer controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::booking.booking');
+module.exports = createCoreController('api::customer.customer');

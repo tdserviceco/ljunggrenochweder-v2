@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollEffect } from '../../assets/custom-hooks';
 import { useQuery } from '@apollo/client'
-import { STRUCTURE_EXAMPLE } from '../../GraphQL/Queries';
+import { BACKGROUND_IMAGE } from '../../GraphQL/Queries';
 import { Loader } from '../../components';
 
 const Structure = () => {
-  const { loading, data, error } = useQuery(STRUCTURE_EXAMPLE, {
+  const { loading, data, error } = useQuery(BACKGROUND_IMAGE, {
     variables: {
       id: 1
     }
@@ -61,7 +61,7 @@ const Structure = () => {
       {loading && <Loader />}
       {
         !loading && mediaData !== undefined &&
-        <div style={{height: '400px', width: '600px'}}>
+        <div style={{ height: '400px', width: '600px' }}>
           <img
             loading='lazy'
             src={`${import.meta.env.VITE_APP_DOMAIN}/uploads/${mediaData.formats.small.hash}${mediaData.formats.small.ext}`}

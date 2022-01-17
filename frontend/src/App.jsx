@@ -9,7 +9,8 @@ import {
 import { onError } from '@apollo/client/link/error';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Home, Register, Structure, HTMLErrorCodes } from './containers';
+import { Home, Register, Structure, HTMLErrorCodes, Booking } from './containers';
+
 import { Header, Footer } from './components';
 //Error link handler
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -41,6 +42,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/structure" element={<Structure />} />
+          <Route path="/booking" element={<Booking />} />
           <Route path="*" element={<HTMLErrorCodes status={404} />} />
         </Routes>
       </BrowserRouter>

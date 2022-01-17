@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * schedule service.
+ * customer service.
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::schedule.schedule');
+module.exports = createCoreService('api::customer.customer');

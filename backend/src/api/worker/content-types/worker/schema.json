@@ -4,7 +4,8 @@
   "info": {
     "singularName": "worker",
     "pluralName": "workers",
-    "displayName": "Worker"
+    "displayName": "Worker",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,31 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "inversedBy": "workers"
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "start": {
+      "type": "string",
+      "required": true,
+      "maxLength": 5,
+      "minLength": 5
+    },
+    "end": {
+      "type": "string",
+      "required": true,
+      "maxLength": 5,
+      "minLength": 5
     }
   }
 }
