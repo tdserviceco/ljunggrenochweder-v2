@@ -1,35 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client'
-// import { GET_ALL_SERVICES_BASED_ON_CATEGORY_ID } from '../../GraphQL/Queries';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { services, workersId } from '../../actions';
+import DisplayServices from './DisplayServices';
+
+import { GET_ALL_SERVICES_BASED_ON_CATEGORY_ID } from '../../GraphQL/Queries';
+
 const StepTwo = () => {
+
+  const dispatch = useDispatch();
   const id = useSelector(state => state.serviceId);
-  console.log(typeof (id))
-  // const dispatch = useDispatch();
-  // const dataSelect = (e) => {
-  //   dispatch(serviceId(e.target.value))
-  // }
 
-  // const { loading, data, error } = useQuery(GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, {
-  //   variables: {
-  //     id: id
-  //   }
-  // });
+  const { loading, data, error } = useQuery(GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, {
+     variables: {
+       id: id
+     }
+  });
 
+  const dataSelectWorker = (e) => {
+    dispatch(workersId(e.target.value))
+    
+  }
+  
+  const fetchServices = () => {
+    if (error) return console.log(error);
+     !loading && dispatch(services(data))
+   }
 
-  // const fetchServices = () => {
-  //   if (error) return console.log(error);
-  //   !loading && dispatch(catgories(data))
-  // }
+  useEffect(() => {
+    fetchServices()
+  }, [data])
 
-  // useEffect(() => {
-  //   fetchCategories()
-  // }, [data])
-
-  return (
-    <>
-      Step 2
-    </>
+  return ( 
+    <select default="" onChange={dataSelectWorker}>
+      <option hidden value="">Välj tjänst</option>
+      <DisplayServices />
+    </select>
   );
 };
 

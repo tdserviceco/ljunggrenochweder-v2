@@ -25,6 +25,14 @@ const services = (state = null, action) => {
   }
 }
 
+const workersId = (state = null, action) => {
+  switch ( action.type) {
+    case 'WORKERSID':
+      return action.value
+    default:
+    return state
+  }
+}
 
 
-export { categories, serviceId, services };
+export { categories, serviceId, services, workersId };

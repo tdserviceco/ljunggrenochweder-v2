@@ -19,6 +19,13 @@ export const services = data => {
   }
 }
 
+export const workersId = id => {
+  return {
+    type: 'WORKERSID',
+    value: id
+  }
+}
+
 export const defaultBackground = data => {
   return {
     type: 'DEFAULTBACKGROUND',
