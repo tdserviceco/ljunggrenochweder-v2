@@ -6,7 +6,7 @@ import DisplayServices from './DisplayServices';
 
 import { GET_ALL_SERVICES_BASED_ON_CATEGORY_ID } from '../../GraphQL/Queries';
 
-const StepTwo = () => {
+const StepTwo = ({ register }) => {
 
   const dispatch = useDispatch();
   const id = useSelector(state => state.categoryId);
@@ -28,10 +28,10 @@ const StepTwo = () => {
 
   useEffect(() => {
     fetchServices()
-  }, [data])
+  }, [data, register])
 
   return (
-    <select default="" onChange={dataSelectService}>
+    <select default="" {...register('service')} onChange={dataSelectService}>
       <option hidden value="">Välj tjänst</option>
       <DisplayServices />
     </select>

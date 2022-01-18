@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { catgories, categoryId } from '../../actions';
 import DisplayCategories from './DisplayCategories';
 
-const StepOne = () => {
+const StepOne = ({ register }) => {
 
   const dispatch = useDispatch();
   const { loading, data, error } = useQuery(GET_ALL_CATEGORIES);
@@ -24,7 +24,7 @@ const StepOne = () => {
   }, [data])
 
   return (
-    <select default="" onChange={dataSelect}>
+    <select default="" {...register('category')} onChange={dataSelect} >
       <option hidden value="">Välj kategori</option>
       <DisplayCategories />
     </select>
