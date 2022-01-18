@@ -1,3 +1,25 @@
+export const checkCategories = boolean => {
+  return {
+    type: 'CHECKCATEGORIES',
+    value: boolean
+  }
+};
+
+export const checkService = boolean => {
+  return {
+    type: 'CHECKSERVICE',
+    value: boolean
+  }
+};
+
+export const checkWorkers = boolean => {
+  return {
+    type: 'CHECKWORKERS',
+    value: boolean
+  }
+};
+
+
 export const catgories = data => {
   return {
     type: 'CATEGORIES',

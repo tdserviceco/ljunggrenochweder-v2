@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client'
 import { useSelector, useDispatch } from 'react-redux';
-import { workers } from '../../actions';
+import { workers, workersId } from '../../actions';
 import DisplayWorkers from './DisplayWorkers';
 import { GET_ALL_WORKERS_BASED_ON_SERVICE_ID } from '../../GraphQL/Queries';
 
-const StepThree = () => {
+const StepThree = ({ register }) => {
 
+  
   const dispatch = useDispatch();
   const id = useSelector(state => state.serviceId);
-  console.log(id)
+  const [demo, setDemo] = useState(null)
 
   const { loading, data, error } = useQuery(GET_ALL_WORKERS_BASED_ON_SERVICE_ID, {
     variables: {
@@ -17,9 +18,10 @@ const StepThree = () => {
     }
   });
 
-  const dataSelectWorker = (e) => {
-    dispatch(workers(e.target.value))
-  }
+  /* const dataSelectWorker = (e) => {
+    setDemo(e.target.value)
+    dispatch(workersId(demo))
+  } */
 
   const fetchWorkers = () => {
     if (error) return console.log(error);
@@ -28,10 +30,12 @@ const StepThree = () => {
 
   useEffect(() => {
     fetchWorkers()
-  }, [data])
+  }, [data, demo])
 
+
+  console.log(demo)
   return (
-    <select default="" onChange={dataSelectWorker}>
+    <select default="" {...register("worker")}>
       <option hidden value="">Välj utförare</option>
       <DisplayWorkers />
     </select>

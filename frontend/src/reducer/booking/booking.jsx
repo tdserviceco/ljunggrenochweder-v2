@@ -1,3 +1,30 @@
+const checkCategories = (state = false, action) => {
+  switch (action.type) {
+    case 'CHECKCATEGORIES':
+      return action.value
+    default:
+      return state
+  }
+}
+const checkService = (state = false, action) => {
+  switch (action.type) {
+    case 'CHECKSERVICE':
+      return action.value
+    default:
+      return state
+  }
+}
+/* Not used at the moment */
+const checkWorkers = (state = false, action) => {
+  switch (action.type) {
+    case 'CHECKWORKERS':
+      return action.value
+    default:
+      return state
+  }
+}
+
+
 const categories = (state = null, action) => {
   switch (action.type) {
     case 'CATEGORIES':
@@ -63,4 +90,4 @@ const workerTimeSchedule = (state = null, action) => {
 }
 
 
-export { categories, categoryId, serviceId, services, workersId, workers, workerTimeSchedule };
+export { categories, categoryId, serviceId, services, workersId, workers, workerTimeSchedule, checkCategories, checkService, checkWorkers };
