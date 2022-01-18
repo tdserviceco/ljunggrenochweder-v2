@@ -26,15 +26,12 @@ const StepThree = ({ register }) => {
     !loading && dispatch(workers(data))
   }
 
-
-
   useEffect(() => {
     fetchWorkers()
   }, [data])
 
   return (
-    <select defaultValue={""} {...register('workers')} onClick={dataSelectWorker} onChange={dataSelectWorker}>
-      <option value="">Välj utförare</option>
+    <select defaultValue={""} {...register('workers')} onChange={dataSelectWorker}>
       <DisplayWorkers />
     </select>
   );
