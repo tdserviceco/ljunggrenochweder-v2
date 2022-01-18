@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { workersId, workers } from '../../actions'
 import DisplayWorkers from './DisplayWorkers';
 import { GET_ALL_WORKERS_BASED_ON_SERVICE_ID } from '../../GraphQL/Queries';
-import { Register } from '..';
 
 const StepThree = ({ register }) => {
 
@@ -18,6 +17,7 @@ const StepThree = ({ register }) => {
   });
 
   const dataSelectWorker = (e) => {
+    if (e.target.value === "") return;
     dispatch(workersId(e.target.value))
   }
 
@@ -26,13 +26,15 @@ const StepThree = ({ register }) => {
     !loading && dispatch(workers(data))
   }
 
+
+
   useEffect(() => {
     fetchWorkers()
   }, [data])
 
   return (
-    <select default="" {...register('workers')} onChange={dataSelectWorker}>
-      <option hidden value="">Välj utförare</option>
+    <select defaultValue={""} {...register('workers')} onClick={dataSelectWorker} onChange={dataSelectWorker}>
+      <option value="">Välj utförare</option>
       <DisplayWorkers />
     </select>
   );

@@ -6,9 +6,7 @@ const DisplayWorkers = () => {
 
   return (
     <>
-      {employees !== null && employees.service.data.attributes.workers.data.map((employee, key) =>
-        <option key={key} value={employee.id}>{employee.attributes.name}</option>)
-      }
+      {employees !== null && employees.service.data.attributes.workers.data.map((employee, key) => <option key={key} value={employee.id}>{employee.attributes.name}</option>)}
     </>
   );
 };
