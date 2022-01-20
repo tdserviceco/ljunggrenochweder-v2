@@ -1,8 +1,6 @@
 import React from 'react';
-import { StepOne, StepThree, StepTwo } from '../../components';
+import { StepOne, StepTwo, StepThree } from '../../components';
 import { useForm } from "react-hook-form";
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 const Booking = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -10,10 +8,9 @@ const Booking = () => {
   return (
     <section className="booking">
       <form onSubmit={handleSubmit(onSubmit)}>
-
         <StepOne register={register} />
         <StepTwo register={register} />
-        {/* <StepThree register={register} /> */}
+        <StepThree register={register} />
         <button type="submit">Sök tid</button>
       </form>
     </section >
