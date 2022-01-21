@@ -3,9 +3,11 @@ import { useSelector } from 'react-redux';
 
 const DisplayWorkers = () => {
   const employees = useSelector(state => state.workers);
-
+  // console.log("employee: ", employees)
   return (
-    <>{employees !== null && employees.service.data.attributes.workers.data.map((employee, key) => <option key={key} value={employee.id}>{employee.attributes.name}</option>)}</>
+    <>
+      {employees !== null && employees.map((employee, key) => <option key={key} value={employee.id}>{employee.attributes.name}</option>)}
+    </>
   );
 };
 

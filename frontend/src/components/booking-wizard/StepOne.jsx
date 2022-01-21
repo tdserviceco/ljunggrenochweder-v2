@@ -1,36 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client'
-import { GET_ALL_CATEGORIES } from '../../GraphQL/Queries';
-import { useDispatch } from 'react-redux';
-import { catgories, categoryId, checkCategories } from '../../actions';
+import React, { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { categoryId, serviceId } from '../../actions';
 import DisplayCategories from './DisplayCategories';
 
-const StepOne = ({ register }) => {
-
-  let selectBox = document.querySelector('select')
+const StepOne = ({ preset }) => {
   const dispatch = useDispatch();
-  const { loading, data, error } = useQuery(GET_ALL_CATEGORIES);
-  /* const [toggleCategories, setToggleCategories] = useState(true); */
+  const [firstRow] = useState('');
 
-  const dataSelect = (e) => {
+  const cateID = useSelector(state => state.categoryId)
+
+  const dataSelectCategory = (e) => {
+    if (e.target.value === '') return;
     dispatch(categoryId(e.target.value));
-    /* dispatch(checkCategories(toggleCategories)); */
+    if (e.target.value !== cateID) {
+      dispatch(serviceId(null));
+    }
   }
-
-  const fetchCategories = () => {
-    if (error) return console.log(error);
-    !loading && dispatch(catgories(data));
-  }
-
-  useEffect(() => {
-      console.log(selectBox)
-      fetchCategories(); 
-  }, [data])
-
   return (
-    <select default="" {...register("category")} onChange={dataSelect}>
-      <option hidden value="">Välj kategori</option>
-
+    <select defaultValue={firstRow} name={'category'} onClick={dataSelectCategory} >
+      <option hidden value={firstRow}>{preset}</option>
       <DisplayCategories />
 
     </select>

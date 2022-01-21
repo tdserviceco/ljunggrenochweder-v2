@@ -1,44 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client'
-import { useSelector, useDispatch } from 'react-redux';
-import { services, serviceId, checkService } from '../../actions';
+import React, { useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { serviceId } from '../../actions';
 import DisplayServices from './DisplayServices';
 
-import { GET_ALL_SERVICES_BASED_ON_CATEGORY_ID } from '../../GraphQL/Queries';
-
-const StepTwo = ({ register }) => {
-
-  let selectBox1 = document.querySelector('select[name="service"]')
+const StepTwo = ({ preset }) => {
 
   const dispatch = useDispatch();
-  const id = useSelector(state => state.categoryId);
-  const [toggleServices, setToggleServices] = useState(true);
+  const [firstRow] = useState('');
 
-  const { loading, data, error } = useQuery(GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, {
-    variables: {
-      id: id
-    }
-  });
-
-  /* const dataSelectService = (e) => {
+  const dataSelectService = (e) => {
+    if (e.target.value === '') return;
     dispatch(serviceId(e.target.value));
-    setToggleServices(true);
-    dispatch(checkService(toggleServices));
-  } */
-
-  const fetchServices = () => {
-    if (error) return console.log(error);
-    !loading && dispatch(services(data));
   }
 
-  useEffect(() => {
-      console.log(selectBox1)
-      fetchServices()
-  }, [data])
-
   return (
-    <select default="" {...register("service")}>
-      <option hidden value="">Välj tjänst</option>
+    <select defaultValue={firstRow} name={'services'} onClick={dataSelectService}>
+      <option hidden value={firstRow}>{preset}</option>
       <DisplayServices />
     </select>
   );
