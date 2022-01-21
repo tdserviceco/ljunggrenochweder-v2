@@ -15,7 +15,7 @@ export const categoryId = id => {
 export const serviceId = id => {
   return {
     type: 'SERVICEID',
-    value: Number(id)
+    value: id
   }
 }
 

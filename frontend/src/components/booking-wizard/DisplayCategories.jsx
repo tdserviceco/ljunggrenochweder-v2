@@ -5,7 +5,6 @@ const DisplayCategories = () => {
 
   const categories = useSelector(state => state.categories);
 
-  categories !== null && console.log("Categories loaded!")
   return (
     <>
       {categories !== null && categories.map((category, key) =>
