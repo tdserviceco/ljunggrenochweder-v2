@@ -6,7 +6,7 @@ const DisplayCategories = () => {
   const categories = useSelector(state => state.categories);
   return (
     <>
-      <option value="">Välj kategori</option>
+     
       {categories !== null && categories.categories.data.map((category, key) =>
         <option key={key} value={category.id}>{category.attributes.name}</option>)}</>
   );

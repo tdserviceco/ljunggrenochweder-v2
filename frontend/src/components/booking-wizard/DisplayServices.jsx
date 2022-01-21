@@ -5,7 +5,7 @@ const DisplayServices = () => {
   const services = useSelector(state => state.services);
   return (
     <>
-      <option value="">Välj tjänst</option>
+      
       {services !== null && services.category.data.attributes.services.data.map((s, key) => <option key={key} value={s.id}>{s.attributes.service}  - {s.attributes.time}min</option>)}</>
   );
 };

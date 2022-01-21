@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client'
 import { useSelector, useDispatch } from 'react-redux';
-import { services, serviceId } from '../../actions';
+import { services, serviceId, categoryId } from '../../actions';
 import DisplayServices from './DisplayServices';
 
 import { GET_ALL_SERVICES_BASED_ON_CATEGORY_ID } from '../../GraphQL/Queries';
 
-const StepTwo = ({ register }) => {
+const StepTwo = ({ register, preset }) => {
+
   const dispatch = useDispatch();
   const id = useSelector(state => state.categoryId);
+  const [firstRow] = useState('')
   const { loading, data, error } = useQuery(GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, {
     variables: {
       id: id
@@ -16,7 +18,7 @@ const StepTwo = ({ register }) => {
   });
 
   const dataSelectService = (e) => {
-    if (e.target.value === "") return;
+    if (e.target.value === '' /* || e.target === undefined */) return;
     dispatch(serviceId(e.target.value))
   }
 
@@ -27,11 +29,13 @@ const StepTwo = ({ register }) => {
 
   useEffect(() => {
     console.log('A new id, Fetch service')
-    fetchServices()
+    fetchServices();
+    /* dataSelectService(); */
   }, [data])
 
   return (
-    <select defaultValue={""} {...register('service')} onLoad={dataSelectService}>
+    <select defaultValue={ firstRow } {...register('service')} onChange={ dataSelectService }>
+      <option value={ firstRow }>{ preset }</option>
       <DisplayServices />
     </select>
   );
