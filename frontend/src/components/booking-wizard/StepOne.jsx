@@ -1,34 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client'
-import { GET_ALL_CATEGORIES } from '../../GraphQL/Queries';
+import React, { useState } from 'react';
+
 import { useDispatch } from 'react-redux';
-import { catgories, categoryId, serviceId } from '../../actions';
+import { categoryId } from '../../actions';
 import DisplayCategories from './DisplayCategories';
 
-const StepOne = ({ register, preset, id }) => {
+const StepOne = ({ register, preset }) => {
 
   const dispatch = useDispatch();
-  const { loading, data, error } = useQuery(GET_ALL_CATEGORIES);
   const [firstRow] = useState('')
 
   const dataSelectCategory = (e) => {
-    if (e.target.value === '' /* || e.target === undefined */) return;
+    if (e.target.value === '') return;
     dispatch(categoryId(e.target.value));
   }
-
-  const fetchCategories = () => {
-    if (error) return console.log(error);
-    !loading && dispatch(catgories(data));
-  }
-
-  useEffect(() => {
-    fetchCategories();
-    /* dataSelectCategory(); */
-  }, [data]);
-
   return (
-    <select defaultValue={ firstRow } {...register('category')} onChange={ dataSelectCategory } >
-      <option value={ firstRow }>{ preset }</option>
+    <select defaultValue={firstRow} {...register('category')} onChange={dataSelectCategory} >
+      <option value={firstRow}>{preset}</option>
       <DisplayCategories />
     </select>
   );

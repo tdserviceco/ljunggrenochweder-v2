@@ -1,4 +1,4 @@
-export const catgories = data => {
+export const categories = data => {
   return {
     type: 'CATEGORIES',
     value: data
