@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { client } from './assets';
+import { client } from './assets/apollo-client'
 
 import allReducer from './reducer';
 const store = createStore(allReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

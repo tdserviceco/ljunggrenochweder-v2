@@ -6,13 +6,10 @@ const allReducer = combineReducers({
   defaultBackground: defaultBackground,
   categories: categories,
   categoryId: categoryId,
-  checkCategories: checkCategories,
   serviceId: serviceId,
   services: services,
-  checkService: checkService,
   workersId: workersId,
   workers: workers,
-  checkWorkers: checkWorkers,
   workerTimeSchedule: workerTimeSchedule
 });
 

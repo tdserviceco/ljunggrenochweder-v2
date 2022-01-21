@@ -4,7 +4,7 @@ let useFormSubmit = (form) => {
   const elements = document.forms['booking'].elements;
   for (let i = 0; i < elements.length; i++) {
     if (elements[i].localName !== 'button') {
-      console.log(elements[i].name + " - " + elements[i].value);
+      console.log("Name: " + elements[i].name + " - " + "ID:" + elements[i].value);
     }
   }
   return
