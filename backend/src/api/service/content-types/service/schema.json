@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "service": {
+    "name": {
       "type": "string",
       "required": true
     },

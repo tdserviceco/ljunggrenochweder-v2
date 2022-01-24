@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "workhours",
+  "info": {
+    "singularName": "workhour",
+    "pluralName": "workhours",
+    "displayName": "Workhour",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "schedule": {
+      "type": "component",
+      "repeatable": true,
+      "component": "schedule.schedule"
+    },
+    "year": {
+      "type": "string"
+    },
+    "worker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::worker.worker",
+      "inversedBy": "workhours"
+    }
+  }
+}

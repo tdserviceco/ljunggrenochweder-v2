@@ -23,21 +23,11 @@
       "target": "api::service.service",
       "inversedBy": "workers"
     },
-    "date": {
-      "type": "date",
-      "required": true
-    },
-    "start": {
-      "type": "string",
-      "required": true,
-      "maxLength": 5,
-      "minLength": 5
-    },
-    "end": {
-      "type": "string",
-      "required": true,
-      "maxLength": 5,
-      "minLength": 5
+    "workhours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::workhour.workhour",
+      "mappedBy": "worker"
     }
   }
 }

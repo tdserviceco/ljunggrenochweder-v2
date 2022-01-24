@@ -27,11 +27,11 @@ const GET_ALL_SERVICES_BASED_ON_CATEGORY_ID = gql`query getServiceByCategoryId($
   category(id:$id) {
     data {
       attributes {
-        services(sort:"service:ASC") {
+        services(sort:"name:ASC") {
           data {
             id
             attributes {
-              service
+              name
               time
             }
           }
@@ -58,4 +58,21 @@ const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id:
   }
 }`
 
-export { BACKGROUND_IMAGE, GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID }
+const GET_EMPLOYEE_SCHEDULE = gql`query(employeeInfo($idWorker: ID!, $year: String!)) {
+  workers(filters: { id: { eq: $idWorker } }) {
+    data {
+      attributes {
+        name
+        workhours(filters: { year: { eq: $year } }) {
+          data {
+            attributes {
+              year
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
+export { BACKGROUND_IMAGE, GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID, GET_EMPLOYEE_SCHEDULE }

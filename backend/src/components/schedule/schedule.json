@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_schedule_schedules",
+  "info": {
+    "displayName": "Schedule",
+    "icon": "list-ol",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "work": {
+      "type": "date"
+    },
+    "start": {
+      "type": "string",
+      "maxLength": 5,
+      "minLength": 5
+    },
+    "end": {
+      "type": "string",
+      "maxLength": 5,
+      "minLength": 5
+    }
+  }
+}

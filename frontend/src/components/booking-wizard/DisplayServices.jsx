@@ -6,7 +6,7 @@ const DisplayServices = () => {
   // console.log("service: ", services)
   return (
     <>
-      {services !== null && services.map((s, key) => <option key={key} value={s.id}>{s.attributes.service}  - {s.attributes.time}min</option>)}
+      {services !== null && services.map((service, key) => <option key={key} value={service.id}>{service.attributes.name}</option>)}
     </>
   );
 };
