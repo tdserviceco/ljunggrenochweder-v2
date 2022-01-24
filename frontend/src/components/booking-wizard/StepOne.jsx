@@ -21,7 +21,6 @@ const StepOne = ({ preset }) => {
     <select defaultValue={firstRow} name={'category'} onClick={dataSelectCategory} >
       <option hidden value={firstRow}>{preset}</option>
       <DisplayCategories />
-
     </select>
   );
 };
