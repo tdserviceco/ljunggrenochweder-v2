@@ -58,7 +58,7 @@ const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id:
   }
 }`
 
-const GET_EMPLOYEE_SCHEDULE = gql`query(employeeInfo($idWorker: ID!, $year: String!)) {
+/* const GET_EMPLOYEE_SCHEDULE = gql`query (employeeInfo($idWorker: ID!, $year: String!)) {
   workers(filters: { id: { eq: $idWorker } }) {
     data {
       attributes {
@@ -73,6 +73,6 @@ const GET_EMPLOYEE_SCHEDULE = gql`query(employeeInfo($idWorker: ID!, $year: Stri
       }
     }
   }
-}`
+}` */
 
-export { BACKGROUND_IMAGE, GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID, GET_EMPLOYEE_SCHEDULE }
+export { BACKGROUND_IMAGE, GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID, /* GET_EMPLOYEE_SCHEDULE */ }
