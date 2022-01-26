@@ -17,7 +17,7 @@
       "repeatable": true,
       "component": "schedule.schedule"
     },
-    "year": {
+    "week": {
       "type": "string"
     },
     "worker": {

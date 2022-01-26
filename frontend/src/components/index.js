@@ -11,3 +11,5 @@ export { default as NoMatch } from './errors/NoMatch'
 export { default as StepOne } from './booking-wizard/StepOne'
 export { default as StepTwo } from './booking-wizard/StepTwo'
 export { default as StepThree } from './booking-wizard/StepThree'
+
+export { default as Schedule } from './schedule/Schedule'

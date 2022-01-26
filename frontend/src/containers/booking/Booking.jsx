@@ -1,16 +1,25 @@
-import React, { useEffect } from 'react';
-import { StepOne, StepTwo, StepThree } from '../../components';
-import { useFormSubmit } from '../../assets/custom-hooks';
+import React, { useEffect, useState } from 'react';
+import { StepOne, StepTwo, StepThree, Schedule } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { categories, services, workers } from '../../actions';
 import { useQuery } from '@apollo/client'
 import { GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID } from '../../GraphQL/Queries';
 
 const Booking = () => {
+  const [bookingHour, setBookingHour] = useState(null);
+  const formSubmit = (form) => {
+    let formValues = {};
+    form.preventDefault()
+    const elements = document.forms['booking'].elements;
+    formValues = {
+      serviceId: elements[1].value,
+      workerId: elements[2].value
+    }
+    setBookingHour(formValues)
+  }
 
   const cateID = useSelector(state => state.categoryId);
   const servID = useSelector(state => state.serviceId);
-
   const dispatch = useDispatch();
 
   const categoriesQuery = useQuery(GET_ALL_CATEGORIES);
@@ -55,7 +64,7 @@ const Booking = () => {
 
   return (
     <section className="booking">
-      <form name="booking" onSubmit={useFormSubmit}>
+      <form name="booking" onSubmit={formSubmit}>
         <StepOne preset={'Välj kategori'} />
         {cateID !== null &&
           <StepTwo preset={'Välj service'} />
@@ -65,7 +74,10 @@ const Booking = () => {
         }
         <button type="submit">Sök tid</button>
       </form>
-    </section >
+      {bookingHour !== null &&
+        <Schedule workHours={bookingHour} />
+      }
+    </section>
   );
 };
 

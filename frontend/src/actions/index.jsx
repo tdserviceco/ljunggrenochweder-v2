@@ -41,20 +41,9 @@ export const workers = data => {
   }
 }
 
-
-
-export const workerTimeSchedule = data => {
-  return {
-    type: 'WORKERTIMESCHEDULE',
-    value: data
-  }
-}
-
 export const defaultBackground = data => {
   return {
     type: 'DEFAULTBACKGROUND',
     value: data
   }
 };
-
-

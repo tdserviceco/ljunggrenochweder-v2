@@ -58,15 +58,26 @@ const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id:
   }
 }`
 
-const GET_EMPLOYEE_SCHEDULE = gql`query(employeeInfo($idWorker: ID!, $year: String!)) {
-  workers(filters: { id: { eq: $idWorker } }) {
+const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($service: ID, $employee: ID, $date: String) {
+  workers(filters: { id: { eq: $employee } }) {
     data {
       attributes {
         name
-        workhours(filters: { year: { eq: $year } }) {
+        services(filters: { id: { eq: $service } }) {
           data {
             attributes {
-              year
+              name
+            }
+          }
+        }
+        workhours {
+          data {
+            attributes {
+              schedule(filters: { work: { eq: $date} }) {
+                work
+                start
+                end
+              }
             }
           }
         }

@@ -21,10 +21,10 @@
     "react-gravatar": "^2.6.3",
     "react-hook-form": "^7.19.1",
     "react-i18next": "^11.13.0",
+    "react-redux": "^7.2.6",
     "react-responsive": "^9.0.0-beta.4",
     "react-router-dom": "^6.1.1",
     "react-transition-state": "^1.1.1",
-    "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "sass": "^1.43.4"
