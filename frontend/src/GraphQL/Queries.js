@@ -58,7 +58,7 @@ const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id:
   }
 }`
 
-const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($service: ID, $employee: ID, $date: String) {
+const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($employee: ID!, $service: ID!, $date: Date!) {
   workers(filters: { id: { eq: $employee } }) {
     data {
       attributes {

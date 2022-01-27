@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client'
 import { GET_EMPLOYEE_SCHEDULE } from '../../GraphQL/Queries';
+import { Loader } from '..';
+import Markup from './Markup';
 
 const MapSchedule = ({ date, workHours }) => {
 
@@ -10,35 +12,32 @@ const MapSchedule = ({ date, workHours }) => {
     variables: {
       service: Number(workHours.serviceId),
       employee: Number(workHours.workerId),
-      date: String(date)
+      date: date
     }
   });
 
   useEffect(() => {
     if (employeeHours.error) return console.error(employeeHours.error)
+
     !employeeHours.loading && setTimeSchedule(employeeHours.data.workers.data);
   }, [employeeHours.data])
 
   return (
     <>
-      <h2>{console.log(date, timeSchedule)}</h2>
-      {/* {timeSchedule !== null && timeSchedule.map((time, key) => {
-        console.log("time", time)
+      {employeeHours.loading && <Loader />}
+      {!employeeHours.loading && timeSchedule !== null && timeSchedule.map((time, key) => {
         return (
-          <>
-            <h2 key={key}>{time.attributes.name}</h2>
+          <div key={key}>
+            <h2 >{time.attributes.name}</h2>
             {time.attributes.workhours.data.map((d, key) => {
-              return (
-                <div className={`demo-${key}`} key={key}>
-                  {d.attributes.schedule.map((s, key) => <>
-                    <h3>{s.work}</h3>
-                    <h4>{s.start} - {s.end}</h4>
-                  </>
-                  )}
-                </div>)
+              return d.attributes.schedule.length === 0 ? 
+              <h3 key={ key }>No times</h3> : 
+              <Markup start={d.attributes.schedule[0].start} 
+                      end={d.attributes.schedule[0].end}
+                      key={ key } />
             })}
-          </>)
-      })} */}
+          </div>)
+      })}
     </>
   );
 };

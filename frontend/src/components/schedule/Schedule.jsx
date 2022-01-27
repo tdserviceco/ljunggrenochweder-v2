@@ -4,16 +4,18 @@ import Calendar from 'react-calendar'
 
 const Schedule = ({ workHours }) => {
 
+  const [value, onChange] = useState(new Date());
   const [displayDay, setDisplayDay] = useState(false);
   const display = () => {
     setDisplayDay(false);
-    setDisplayDay(true)
+    setDisplayDay(true);
   }
 
-  const [value, onChange] = useState(new Date());
+  /* const day = document.querySelector('.react-calendar .react-calendar__viewContainer') */
 
   return (
     <>
+      
       <Calendar
         value={value}
         onChange={onChange}
@@ -21,8 +23,9 @@ const Schedule = ({ workHours }) => {
         view={'month'}
         onClickDay={display}
       />
+      
       {displayDay &&
-        <MapSchedule date={`${value.getFullYear()}-${value.getMonth() < 10 ? '' + value.getMonth() + 1 : value.getMonth() + 1}-${value.getDate()}`} workHours={workHours} />
+        <MapSchedule date={ value.toLocaleDateString().slice(0,10) } workHours={ workHours } />
       }
     </>
   );
