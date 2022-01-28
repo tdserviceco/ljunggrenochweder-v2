@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Home, Booking, Structure, HTMLErrorCodes, Register } from './containers';
 import { Header, Footer } from './components';
 const App = () => {
@@ -11,7 +11,9 @@ const App = () => {
         <Route path="/structure" element={<Structure />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/register" element={<Register />} />
-        <Route path="*" element={<HTMLErrorCodes status={404} />} />
+        <Route path="*" element={<Navigate to="404" />} />
+        <Route path="/404" element={<HTMLErrorCodes status={404} />} />
+        <Route path="/403" element={<HTMLErrorCodes status={403} />} />
       </Routes>
       <Footer />
     </>

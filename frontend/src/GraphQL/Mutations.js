@@ -18,4 +18,21 @@ RegisterNewUser(
   }
   }`;
 
-export { CREATE_USER }
+const LOGIN_USER = gql`mutation 
+UserValue(
+  $email: String!, 
+  $password: String!
+  ) {
+    login(
+    input: { identifier: $email, password: $password }
+    ) {
+    jwt 
+    user {
+     id 
+     username 
+     email
+     }
+    }
+}`
+
+export { CREATE_USER, LOGIN_USER }

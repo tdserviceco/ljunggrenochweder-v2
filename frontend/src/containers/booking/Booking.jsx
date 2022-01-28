@@ -4,9 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { categories, services, workers } from '../../actions';
 import { useQuery } from '@apollo/client'
 import { GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID } from '../../GraphQL/Queries';
-
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie'
 const Booking = () => {
+
+  let navigator = useNavigate()
+
+  const [cookies] = useCookies(['userProfile']);
   const [bookingHour, setBookingHour] = useState(null);
+
   const formSubmit = (form) => {
     let formValues = {};
     form.preventDefault()
@@ -45,6 +51,18 @@ const Booking = () => {
     serv: serviceQuery.loading,
     emp: employeeQuery.loading
   }
+
+
+  const securityCheck = () => {
+    if (cookies.userProfile === undefined) {
+      navigator('/403');
+    }
+  }
+
+  useEffect(() => {
+    // Check our security
+    securityCheck();
+  }, [])
 
   useEffect(() => {
     if (error.cat) return error.cat
