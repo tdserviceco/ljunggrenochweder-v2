@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Home, Booking, Structure, HTMLErrorCodes } from './containers';
+import { Home, Booking, Structure, HTMLErrorCodes, Register } from './containers';
 import { Header, Footer } from './components';
 const App = () => {
   return (
@@ -10,6 +10,7 @@ const App = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/structure" element={<Structure />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<HTMLErrorCodes status={404} />} />
       </Routes>
       <Footer />
