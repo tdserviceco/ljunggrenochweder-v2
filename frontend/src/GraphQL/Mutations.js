@@ -35,4 +35,21 @@ UserValue(
     }
 }`
 
-export { CREATE_USER, LOGIN_USER }
+const REGISTER_BOOKED_HOUR = gql`mutation 
+CreateBookingForThisHour(
+  $time: String!,
+  $worker: String!,
+  $booked: Boolean!,
+  ) {
+    createBooking(data: {time: $time, booked: $booked, worker: $worker}) {
+    data {
+      id
+      attributes {
+        booked
+      }
+    }
+  }
+}`
+
+
+export { CREATE_USER, LOGIN_USER, REGISTER_BOOKED_HOUR }

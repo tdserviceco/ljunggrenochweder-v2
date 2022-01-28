@@ -13,8 +13,6 @@ const RegisterForm = () => {
   let navigate = useNavigate();
 
   const add = formValue => {
-    if (loading) return 'Submitting...';
-    if (error) return `Submission error! ${error.message}`;
     addUser({
       variables: {
         email: formValue.email,
