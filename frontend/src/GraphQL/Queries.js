@@ -23,6 +23,17 @@ const GET_ALL_CATEGORIES = gql`query {
    }
 }`
 
+const GET_ALL_SERVICES = gql`query {
+  services {
+    data {
+      attributes {
+        name
+        price
+      }
+    }
+  }
+}`
+
 const GET_ALL_SERVICES_BASED_ON_CATEGORY_ID = gql`query getServiceByCategoryId($id: ID!){
   category(id:$id) {
     data {
@@ -86,4 +97,11 @@ const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($employee: ID!, $service: I
   }
 }`
 
-export { BACKGROUND_IMAGE, GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID, GET_EMPLOYEE_SCHEDULE }
+export {
+  BACKGROUND_IMAGE,
+  GET_ALL_CATEGORIES,
+  GET_ALL_SERVICES_BASED_ON_CATEGORY_ID,
+  GET_ALL_WORKERS_BASED_ON_SERVICE_ID,
+  GET_EMPLOYEE_SCHEDULE,
+  GET_ALL_SERVICES
+}

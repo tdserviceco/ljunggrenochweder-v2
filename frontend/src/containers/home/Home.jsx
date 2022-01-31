@@ -1,22 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux';
-import { BACKGROUND_IMAGE } from '../../GraphQL/Queries';
+import { BACKGROUND_IMAGE, GET_ALL_SERVICES } from '../../GraphQL/Queries';
+import { Loader, PriceList } from '../../components';
 import { defaultBackground } from '../../actions';
 
 
 const Home = () => {
 
-  const { loading, data, error } = useQuery(BACKGROUND_IMAGE, {
+  const backgroundImage = useQuery(BACKGROUND_IMAGE, {
     variables: {
       id: 1
     }
   });
 
+  const allServices = useQuery(GET_ALL_SERVICES);
+
   const dispatch = useDispatch();
   const bg = useSelector(state => state.defaultBackground);
+
+  const [services, setServices] = useState(null);
 
   const small = useMediaQuery({ query: '(max-width: 599px)' });
   const medium = useMediaQuery({ query: '(min-width: 600px) and (max-width: 1023px)' });
@@ -24,39 +29,40 @@ const Home = () => {
   const HD = useMediaQuery({ query: '(min-width: 1440px)' });
 
   const getMedia = () => {
-    if (error) {
-      console.log(error)
-      return;
+    if (small) {
+      dispatch(defaultBackground(backgroundImage.data.uploadFile.data.attributes.formats.small.url));
     }
-    if (small && !loading) {
-      dispatch(defaultBackground(data.uploadFile.data.attributes.formats.small.url));
+    if (medium && !backgroundImage.loading) {
+      dispatch(defaultBackground(backgroundImage.data.uploadFile.data.attributes.formats.medium.url));
     }
-    if (medium && !loading) {
-      dispatch(defaultBackground(data.uploadFile.data.attributes.formats.medium.url));
-    }
-    if (large && !loading) {
-      dispatch(defaultBackground(data.uploadFile.data.attributes.formats.large.url));
+    if (large && !backgroundImage.loading) {
+      dispatch(defaultBackground(backgroundImage.data.uploadFile.data.attributes.formats.large.url));
     }
 
-    if (HD && !loading) {
-      dispatch(defaultBackground(data.uploadFile.data.attributes.url));
+    if (HD && !backgroundImage.loading) {
+      dispatch(defaultBackground(backgroundImage.data.uploadFile.data.attributes.url));
     }
 
-    // Debug
-    /* if (!loading) {
-      console.log(data.uploadFile.data.attributes)
-    } */
   };
 
   useEffect(() => {
-    getMedia()
-  }, [data, small, medium, large]);
+    if (backgroundImage.error) return console.log(backgroundImage.error)
+    !backgroundImage.loading && getMedia()
+  }, [backgroundImage.data, small, medium, large]);
 
+  useEffect(() => {
+    if (allServices.error) return console.log(allServices.error)
+    !allServices.loading && setServices(allServices.data.services.data)
+  }, [allServices.data])
 
 
   return (
     <main className="home" role="main" style={{ background: `url(${import.meta.env.VITE_APP_DOMAIN}${bg}) center/cover no-repeat` }}>
-      This is HOME!!!
+      {console.log(services)}
+      {allServices.loading && <Loader />}
+      {services !== null &&
+        <PriceList allServices={services} />
+      }
     </main>
   );
 };
