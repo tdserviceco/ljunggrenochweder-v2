@@ -1,0 +1,17 @@
+@use "../abstracts/" as *;
+
+main{
+  .home-container{
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    h1, h3{
+      color: $boneWhite;
+    }
+  }
+}

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Login } from '..';
+import { Register } from '..';
 
 const Header = () => {
 
-
+  const [login, toggleLogin] = useState(false);
+  const [register, toggleRegister] = useState(false);
 
   return (
     <header>
@@ -12,11 +14,16 @@ const Header = () => {
         <div></div>
         <div></div>
       </div>
-      <div className='title-and-login'>
+      <div className='title-and-log-reg'>
         <h3 className='title'>Ljungren & Weder</h3>
-        <p className='login'>Logga in/Registrera</p>
+        <div className="log-reg-container">
+          <button className='login-button' onClick={() => toggleLogin(!login) }>Logga in </button>
+          <span>/</span>
+          <button className='register-button' onClick={() => toggleRegister(!register) }>Registrera</button>
+        </div>
       </div>
-      {/* <Login /> */}
+      {login && <Login />}
+      {register && <Register />}
     </header>
   );
 };
