@@ -38,7 +38,7 @@ UserValue(
 const REGISTER_BOOKED_HOUR = gql`mutation 
 CreateBookingForThisHour(
   $time: String!,
-  $worker: String!,
+  $worker: ID!,
   $booked: Boolean!,
   ) {
     createBooking(data: {time: $time, booked: $booked, worker: $worker}) {

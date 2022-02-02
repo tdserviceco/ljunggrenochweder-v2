@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -20,7 +20,10 @@
       "default": false
     },
     "worker": {
-      "type": "string"
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::worker.worker",
+      "inversedBy": "bookings"
     }
   }
 }

@@ -28,6 +28,12 @@
       "relation": "oneToMany",
       "target": "api::workhour.workhour",
       "mappedBy": "worker"
+    },
+    "bookings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::booking.booking",
+      "mappedBy": "worker"
     }
   }
 }
