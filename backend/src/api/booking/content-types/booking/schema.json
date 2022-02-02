@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookings",
+  "info": {
+    "singularName": "booking",
+    "pluralName": "bookings",
+    "displayName": "Bookings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "time": {
+      "type": "string"
+    },
+    "booked": {
+      "type": "boolean",
+      "default": false
+    },
+    "worker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::worker.worker",
+      "inversedBy": "bookings"
+    }
+  }
+}

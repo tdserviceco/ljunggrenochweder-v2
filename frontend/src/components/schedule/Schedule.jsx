@@ -11,11 +11,8 @@ const Schedule = ({ workHours }) => {
     setDisplayDay(true);
   }
 
-  /* const day = document.querySelector('.react-calendar .react-calendar__viewContainer') */
-
   return (
     <>
-      
       <Calendar
         value={value}
         onChange={onChange}
@@ -23,9 +20,9 @@ const Schedule = ({ workHours }) => {
         view={'month'}
         onClickDay={display}
       />
-      
+
       {displayDay &&
-        <MapSchedule date={ value.toLocaleDateString().slice(0,10) } workHours={ workHours } />
+        <MapSchedule date={value.toLocaleDateString().slice(0, 10)} workHours={workHours} />
       }
     </>
   );
