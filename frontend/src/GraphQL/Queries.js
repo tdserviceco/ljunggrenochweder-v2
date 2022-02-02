@@ -34,11 +34,11 @@ const GET_ALL_SERVICES = gql`query {
   }
 }`
 
-const GET_ALL_SERVICES_BASED_ON_CATEGORY_ID = gql`query getServiceByCategoryId($id: ID!){
-  category(id:$id) {
+const GET_ALL_SERVICES_BASED_ON_CATEGORY_ID = gql`query getServiceByCategoryId($id: ID!) {
+  category(id: $id) {
     data {
       attributes {
-        services(sort:"name:ASC") {
+        services(sort: "name:ASC") {
           data {
             id
             attributes {
@@ -52,11 +52,11 @@ const GET_ALL_SERVICES_BASED_ON_CATEGORY_ID = gql`query getServiceByCategoryId($
   }
 }`
 
-const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id: ID!){
-  service(id:$id) {
+const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id: ID!) {
+  service(id: $id) {
     data {
       attributes {
-        workers(sort:"name:ASC") {
+        workers(sort: "name:ASC") {
           data {
             id
             attributes {
@@ -72,6 +72,7 @@ const GET_ALL_WORKERS_BASED_ON_SERVICE_ID = gql`query getWorkersByServiceId($id:
 const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($employee: ID!, $service: ID!, $date: Date!) {
   workers(filters: { id: { eq: $employee } }) {
     data {
+      id
       attributes {
         name
         services(filters: { id: { eq: $service } }) {
@@ -84,7 +85,7 @@ const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($employee: ID!, $service: I
         workhours {
           data {
             attributes {
-              schedule(filters: { work: { eq: $date} }) {
+              schedule(filters: { work: { eq: $date } }) {
                 work
                 start
                 end
@@ -97,11 +98,35 @@ const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($employee: ID!, $service: I
   }
 }`
 
+const GET_BOOKED = gql`query employeeTime(
+  $id: ID!
+  $time: String!
+  $booked: Boolean!
+  $date: String!
+) {
+  bookings(
+    filters: {
+      worker: { id: { eq: $id } }
+      time: { eq: $time }
+      booked: { eq: $booked }
+      date: { eq: $date }
+    }
+  ) {
+    data {
+      attributes {
+        booked
+        time
+      }
+    }
+  }
+}`
+
 export {
   BACKGROUND_IMAGE,
   GET_ALL_CATEGORIES,
   GET_ALL_SERVICES_BASED_ON_CATEGORY_ID,
   GET_ALL_WORKERS_BASED_ON_SERVICE_ID,
   GET_EMPLOYEE_SCHEDULE,
-  GET_ALL_SERVICES
+  GET_ALL_SERVICES,
+  GET_BOOKED
 }

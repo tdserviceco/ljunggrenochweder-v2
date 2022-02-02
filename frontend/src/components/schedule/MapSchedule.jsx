@@ -31,7 +31,7 @@ const MapSchedule = ({ date, workHours }) => {
             {time.attributes.workhours.data.map((d, key) => {
               return d.attributes.schedule.length === 0 ?
                 <h3 key={key}>No times</h3> :
-                <Markup employee={time.attributes.name} start={d.attributes.schedule[0].start}
+                <Markup employee={time.id} date={date} start={d.attributes.schedule[0].start}
                   end={d.attributes.schedule[0].end}
                   key={key} />
             })}

@@ -1,14 +1,11 @@
 import { gql } from '@apollo/client';
 
-const CREATE_USER = gql`mutation 
-RegisterNewUser(
-  $username: String! 
+const CREATE_USER = gql`mutation RegisterNewUser(
+  $username: String!
   $email: String!
   $password: String!
-  ) {
-    register(
-    input: { username: $username, email: $email, password: $password }
-  ) {
+) {
+  register(input: { username: $username, email: $email, password: $password }) {
     jwt
     user {
       id
@@ -16,32 +13,27 @@ RegisterNewUser(
       email
     }
   }
-  }`;
+}`;
 
-const LOGIN_USER = gql`mutation 
-UserValue(
-  $email: String!, 
-  $password: String!
-  ) {
-    login(
-    input: { identifier: $email, password: $password }
-    ) {
-    jwt 
+const LOGIN_USER = gql`mutation UserValue($email: String!, $password: String!) {
+  login(input: { identifier: $email, password: $password }) {
+    jwt
     user {
-     id 
-     username 
-     email
-     }
+      id
+      username
+      email
     }
+  }
 }`
 
 const REGISTER_BOOKED_HOUR = gql`mutation 
 CreateBookingForThisHour(
   $time: String!,
-  $worker: ID!,
+  $wID: ID!,
   $booked: Boolean!,
+  $date: String!
   ) {
-    createBooking(data: {time: $time, booked: $booked, worker: $worker}) {
+    createBooking(data: {time: $time, booked: $booked, worker: $wID, date: $date}) {
     data {
       id
       attributes {

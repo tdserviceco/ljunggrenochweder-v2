@@ -24,6 +24,9 @@
       "relation": "manyToOne",
       "target": "api::worker.worker",
       "inversedBy": "bookings"
+    },
+    "date": {
+      "type": "string"
     }
   }
 }

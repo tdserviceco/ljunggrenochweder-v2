@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from 'react';
+
+import { useMutation, useQuery } from '@apollo/client';
 import { REGISTER_BOOKED_HOUR } from '../../GraphQL/Mutations';
-import { useMutation } from '@apollo/client';
-const BookingHour = ({ id, hour, employee }) => {
-  const [bookHour, { data, loading, error }] = useMutation(REGISTER_BOOKED_HOUR);
+import { GET_BOOKED } from '../../GraphQL/Queries';
+
+const BookingHour = ({ id, hour, employee, date }) => {
+  const [bookHour, { data, error, loading }] = useMutation(REGISTER_BOOKED_HOUR);
+  const workerTime = useQuery(GET_BOOKED, {
+    variables: {
+      id: employee,
+      time: hour,
+      booked: true,
+      date: date
+    }
+  })
+
   const [hide, setHide] = useState(false);
 
   const bookThisHour = (e) => {
@@ -10,28 +22,39 @@ const BookingHour = ({ id, hour, employee }) => {
       variables: {
         time: e.target.value,
         booked: true,
-        worker: employee
+        wID: employee,
+        date: date
       }
     })
-    console.log("END??")
+    setHide(true)
   }
 
   useEffect(() => {
+    if (workerTime.error) return console.log(workerTime.error);
+    else if (!workerTime.loading && workerTime.data !== null && workerTime.data.bookings.data.length !== 0) {
+      setHide(true)
+    }
+  }, [workerTime.data])
+
+  useEffect(() => {
     if (data !== undefined) {
-      // data.data.booked ? setHide(true) : setHide(false)
       alert('Booked')
     }
   }, [data])
 
   return (
-    <button
-      style={{ display: `${hide ? 'none' : 'inline'}` }}
-      value={hour}
-      className={`booking-${id + 1}`}
-      type='button'
-      onClick={bookThisHour}>
-      {hour}
-    </button>
+    <>
+      {!hide &&
+        <button
+          value={hour}
+          className={`booking-${id + 1}`}
+          type='button'
+          onClick={bookThisHour}>
+          {hour}
+        </button>
+      }
+    </>
+
   );
 };
 

@@ -7,7 +7,6 @@ const Schedule = ({ workHours }) => {
   const [value, onChange] = useState(new Date());
   const [displayDay, setDisplayDay] = useState(false);
   const display = () => {
-    setDisplayDay(false);
     setDisplayDay(true);
   }
 
