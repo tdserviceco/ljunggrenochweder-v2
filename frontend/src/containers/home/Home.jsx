@@ -59,7 +59,7 @@ const Home = () => {
   return (
     <main className="home" role="main" style={{ background: `url(${import.meta.env.VITE_APP_DOMAIN}${bg}) center/cover no-repeat` }}>
       {console.log(services)}
-      {allServices.loading && <Loader />}
+      {/* {allServices.loading && <Loader />} */}
       {services !== null &&
         <PriceList allServices={services} />
       }

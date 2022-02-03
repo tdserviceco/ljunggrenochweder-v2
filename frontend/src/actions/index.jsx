@@ -47,3 +47,10 @@ export const defaultBackground = data => {
     value: data
   }
 };
+
+export const workHours = data => {
+  return {
+    type: 'WORKHOURS',
+    value: data
+  }
+}

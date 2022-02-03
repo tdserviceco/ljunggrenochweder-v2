@@ -26,7 +26,7 @@ const Markup = ({ start, end, employee, date }) => {
       <h4>{start}</h4>
       <h4>{end}</h4>
       <div className='schedule-container'>
-        {hours.length !== 0 && hours.map((hour, key) => <BookingHour key={key} employee={employee} id={key} date={date} hour={hour} />)}
+        {hours.length !== 0 && hours.map((hour, key) => <BookingHour key={key} employee={employee} date={date} id={key} hour={hour} />)}
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { REGISTER_BOOKED_HOUR } from '../../GraphQL/Mutations';
 import { GET_BOOKED } from '../../GraphQL/Queries';
+import { useSelector } from 'react-redux';
 
 const BookingHour = ({ id, hour, employee, date }) => {
   const [bookHour, { data, error, loading }] = useMutation(REGISTER_BOOKED_HOUR);
@@ -30,9 +31,14 @@ const BookingHour = ({ id, hour, employee, date }) => {
   }
 
   useEffect(() => {
-    if (workerTime.error) return console.log(workerTime.error);
+    if (workerTime.error) {
+      return console.log(workerTime.error);
+    }
     else if (!workerTime.loading && workerTime.data !== null && workerTime.data.bookings.data.length !== 0) {
-      setHide(true)
+      if (workerTime.data.bookings.data[0].attributes.time === hour) {
+        setHide(true)
+
+      }
     }
   }, [workerTime.data])
 

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { StepOne, StepTwo, StepThree, Schedule } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { categories, services, workers } from '../../actions';
+import { categories, services, workers, workHours } from '../../actions';
 import { useQuery } from '@apollo/client'
 import { GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID } from '../../GraphQL/Queries';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
+
 const Booking = () => {
-
+  const dispatch = useDispatch();
+  const workHoursScheme = useSelector(state => state.workHours);
   let navigator = useNavigate()
-
   const [cookies] = useCookies(['userProfile']);
-  const [bookingHour, setBookingHour] = useState(null);
 
   const formSubmit = (form) => {
     let formValues = {};
@@ -21,12 +21,13 @@ const Booking = () => {
       serviceId: elements[1].value,
       workerId: elements[2].value
     }
-    setBookingHour(formValues)
+    console.log(formValues)
+    dispatch(workHours(formValues))
   }
 
   const cateID = useSelector(state => state.categoryId);
   const servID = useSelector(state => state.serviceId);
-  const dispatch = useDispatch();
+
 
   const categoriesQuery = useQuery(GET_ALL_CATEGORIES);
   const serviceQuery = useQuery(GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, {
@@ -92,8 +93,8 @@ const Booking = () => {
         }
         <button type="submit">Sök tid</button>
       </form>
-      {bookingHour !== null &&
-        <Schedule workHours={bookingHour} />
+      {workHoursScheme !== null &&
+        <Schedule />
       }
     </section>
   );
