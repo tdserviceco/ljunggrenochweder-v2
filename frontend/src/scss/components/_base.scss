@@ -14,6 +14,9 @@ picture {
 }
 
 body {
+	&.no-scroll {
+		overflow: hidden;
+	}
 	font-family: $roboto;
 	color: $boneWhite;
 	#root {

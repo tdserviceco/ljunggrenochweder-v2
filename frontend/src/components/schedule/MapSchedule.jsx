@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client'
 import { GET_EMPLOYEE_SCHEDULE } from '../../GraphQL/Queries';
-import { useSelector } from 'react-redux';
 import { Loader } from '..';
 import Markup from './Markup';
 
-const MapSchedule = ({ date }) => {
-  const workHours = useSelector(state => state.workHours)
+const MapSchedule = ({ workHours, date }) => {
+
   const [timeSchedule, setTimeSchedule] = useState(null);
   const employeeHours = useQuery(GET_EMPLOYEE_SCHEDULE, {
     variables: {
@@ -28,13 +27,15 @@ const MapSchedule = ({ date }) => {
         return (
           <div className="employee-hours" key={key}>
             <h2>{time.attributes.name}</h2>
-            {time.attributes.workhours.data.map((d, key) => {
-              return d.attributes.schedule.length === 0 ?
-                <h3 key={key}>No times</h3> :
-                <Markup employee={time.id} date={date} start={d.attributes.schedule[0].start}
-                  end={d.attributes.schedule[0].end}
-                  key={key} />
-            })}
+            <div className='schedule-container'>
+              {time.attributes.workhours.data.map((d, key) => {
+                return d.attributes.schedule.length === 0 ?
+                  <h3 key={key}>No times</h3> :
+                  <Markup employee={time.id} date={date} start={d.attributes.schedule[0].start}
+                    end={d.attributes.schedule[0].end}
+                    key={key} />
+              })}
+            </div>
           </div>)
       })}
     </>

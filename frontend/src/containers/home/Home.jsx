@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux';
-import { BACKGROUND_IMAGE, GET_ALL_SERVICES } from '../../GraphQL/Queries';
-import { Loader, PriceList } from '../../components';
+import { BACKGROUND_IMAGE } from '../../GraphQL/Queries';
+import { ServiceList, Staffs } from '../../components';
 import { defaultBackground } from '../../actions';
 
 
@@ -16,12 +16,8 @@ const Home = () => {
     }
   });
 
-  const allServices = useQuery(GET_ALL_SERVICES);
-
   const dispatch = useDispatch();
   const bg = useSelector(state => state.defaultBackground);
-
-  const [services, setServices] = useState(null);
 
   const small = useMediaQuery({ query: '(max-width: 599px)' });
   const medium = useMediaQuery({ query: '(min-width: 600px) and (max-width: 1023px)' });
@@ -50,19 +46,10 @@ const Home = () => {
     !backgroundImage.loading && getMedia()
   }, [backgroundImage.data, small, medium, large]);
 
-  useEffect(() => {
-    if (allServices.error) return console.log(allServices.error)
-    !allServices.loading && setServices(allServices.data.services.data)
-  }, [allServices.data])
-
-
   return (
     <main className="home" role="main" style={{ background: `url(${import.meta.env.VITE_APP_DOMAIN}${bg}) center/cover no-repeat` }}>
-      {console.log(services)}
-      {/* {allServices.loading && <Loader />} */}
-      {services !== null &&
-        <PriceList allServices={services} />
-      }
+      <ServiceList />
+      <Staffs />
     </main>
   );
 };

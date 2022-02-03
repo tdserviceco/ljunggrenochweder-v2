@@ -52,13 +52,4 @@ const workers = (state = null, action) => {
   }
 }
 
-const workHours = (state = null, action) => {
-  switch (action.type) {
-    case 'WORKHOURS':
-      return action.value
-    default:
-      return state
-  }
-}
-
-export { categories, categoryId, serviceId, services, workersId, workers, workHours };
+export { categories, categoryId, serviceId, services, workersId, workers };

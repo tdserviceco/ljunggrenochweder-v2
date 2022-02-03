@@ -121,6 +121,28 @@ const GET_BOOKED = gql`query employeeTime(
   }
 }`
 
+const GET_STAFFS = gql`query {
+  staffs {
+    data {
+      attributes {
+        name
+        biograph
+        experience
+        profile {
+          data {
+            attributes {
+              ext
+              hash
+              alternativeText
+              formats
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
 export {
   BACKGROUND_IMAGE,
   GET_ALL_CATEGORIES,
@@ -128,5 +150,6 @@ export {
   GET_ALL_WORKERS_BASED_ON_SERVICE_ID,
   GET_EMPLOYEE_SCHEDULE,
   GET_ALL_SERVICES,
-  GET_BOOKED
+  GET_BOOKED,
+  GET_STAFFS
 }

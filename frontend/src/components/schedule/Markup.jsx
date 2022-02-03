@@ -6,15 +6,15 @@ const Markup = ({ start, end, employee, date }) => {
   let endHour = Number(end.replace(':00', ''));
   const time = endHour - startHour;
 
-  let array = [];
+  let timeArray = [];
 
   const loop = () => {
     let hourPass;
     for (let i = 0; i < time; i++) {
       hourPass = startHour + i + " - " + (startHour + i + 1);
-      array.push(hourPass);
+      timeArray.push(hourPass);
     }
-    setHours(array)
+    setHours(timeArray)
   }
 
   useEffect(() => {
@@ -23,11 +23,8 @@ const Markup = ({ start, end, employee, date }) => {
 
   return (
     <>
-      <h4>{start}</h4>
-      <h4>{end}</h4>
-      <div className='schedule-container'>
-        {hours.length !== 0 && hours.map((hour, key) => <BookingHour key={key} employee={employee} date={date} id={key} hour={hour} />)}
-      </div>
+      <h4>{start} - {end}</h4>
+      {hours.length !== 0 && hours.map((hour, key) => <BookingHour key={key} employee={employee} date={date} id={key} hour={hour} />)}
     </>
   );
 };

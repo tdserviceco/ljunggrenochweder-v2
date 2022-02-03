@@ -1,0 +1,38 @@
+@use "../abstracts/" as *;
+
+.staffs {
+  .container {
+    &:first-child {
+      margin: 0;
+    }
+    margin: 1rem 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  picture {
+    width: 100%;
+  }
+
+  .display-container {
+    margin-top: 5rem;
+    display: none;
+    &.active {
+      background-color: green;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      position: fixed;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: block;
+      picture {
+        height: auto;
+      }
+      .info {
+        padding: 1rem;
+      }
+    }
+  }
+}
