@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;900&family=Roboto:wght@400;500;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;900&family=Roboto:wght@400;500;700&display=swap");
 
 $h1: 1.5rem;
 $h2: 1.25rem;
 $h3: 1.125rem;
 $p: 0.875rem;
 
-$skyblue: #5257DA;
+$skyblue: #5257da;
 $leatherBlack: #282829;
-$boneWhite: #EBEBEB;
-$placeholderGrey: #5C5C5C;
+$boneWhite: #ebebeb;
+$placeholderGrey: #5c5c5c;
 $darkCherry: #861515;
-$cherryRed: #D2042D;
+$cherryRed: #d2042d;
 
 $gothicA1: "Gothic A1", sans-serif;
 $roboto: "Roboto", sans-serif;
+
+$grid-columns: 12;

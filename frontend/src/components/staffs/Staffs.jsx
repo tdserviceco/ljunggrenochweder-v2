@@ -13,7 +13,7 @@ const Staffs = () => {
       if (key % 2 == 0) {
         position = 'left'
       }
-      return <MapStaffs key={key} position={position} staff={staff} />
+      return <MapStaffs key={key} id={key + 1} position={position} staff={staff} />
     })
   }
 
@@ -26,7 +26,12 @@ const Staffs = () => {
     <section className={`staffs`}>
       {loading && <Loader />}
       {!loading && staffData !== null &&
-        MapingStaff()
+        <>
+          <h2 className='title'>Om oss</h2>
+          <div className='containers'>
+            {MapingStaff()}
+          </div>
+        </>
       }
     </section >
   );
