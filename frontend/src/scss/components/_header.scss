@@ -6,17 +6,52 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.4rem 1rem;
-    .hamburger-menu{
-      height: 2.5rem;
+
+    .menu-btn{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 3rem;
+      width: 3rem;
       cursor: pointer;
-      div{
-        border-radius: 0.4rem;
-        margin: 0.4rem 0;
-        height: 4px;
-        width: 2rem;
-        background-color: $boneWhite;
+      transition: all .5s ease-in-out;
+      .menu-btn__burger{
+        width: 2.5rem;
+        height: 6px;
+        background: $boneWhite;
+        border-radius: 5px;
+        transition: all .5s ease-in-out;
+      }
+      .menu-btn__burger::before,
+      .menu-btn__burger::after{
+        content: '';
+        position: absolute;
+        width: 2.5rem;
+        height: 6px;
+        background: $boneWhite;
+        border-radius: 5px;
+        transition: all .5s ease-in-out;
+      }
+      .menu-btn__burger::before{
+        transform: translateY(-13px);
+      }
+      .menu-btn__burger::after{
+        transform: translateY(13px);
+      }
+      /* Animation */
+      .menu-btn__burger.open{
+        transform: translateX(-50px);
+        background: transparent;
+      }
+      .menu-btn__burger.open::before{
+        transform: rotate(45deg) translate(35px, -35px);
+      }
+      .menu-btn__burger.open::after{
+        transform: rotate(-45deg) translate(35px, 35px);
       }
     }
+
     .title-and-log-reg{
       .title{
         text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
