@@ -7,10 +7,11 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import BuildCalendar from './BuildCalendar';
-const Calender = () => {
+import MapSchedule from '../schedule/MapSchedule';
+const Calender = ({ workHours }) => {
   const [value, setValue] = useState(moment());
   const [calendar, setCalendar] = useState([]);
-
+  const [clickedDate, setClickedDate] = useState(false);
   //Check if same day is selected
   const isSelected = (day) => {
     return value.isSame(day, "day");
@@ -48,6 +49,11 @@ const Calender = () => {
     return value.clone().add(1, "month");
   }
 
+  const clickedDay = (day) => {
+    setClickedDate(true);
+    setValue(day)
+  }
+
   useEffect(() => {
     //Send our calender from BuildCalender to our state calender
     setCalendar(BuildCalendar(value));
@@ -61,13 +67,13 @@ const Calender = () => {
         <button type="button" className="next" onClick={() => setValue(nextMonth())}>{String.fromCharCode(187)}</button>
       </div>
       <div className='day-names'>
-        {['M', 'T', 'O', 'T', 'F', 'L', 'S'].map(d => <div className='week'>{d}</div>)}
+        {['M', 'T', 'O', 'T', 'F', 'L', 'S'].map((d, key) => <div key={key} className='week'>{d}</div>)}
       </div>
       {calendar.map((week, key) =>
         <div key={key} className='week'>
           {
             week.map((day, key) =>
-              <div key={key} className='day' onClick={() => setValue(day)}>
+              <div key={key} className='day' onClick={() => clickedDay(day)}>
                 <div className={dayStyle(day)}>
                   {day.format("D").toString()}
                 </div>
@@ -76,6 +82,7 @@ const Calender = () => {
         </div>
       )
       }
+      {clickedDate && <MapSchedule date={value.format("YYYY-MM-DD")} workHours={workHours} />}
     </div >
   );
 };

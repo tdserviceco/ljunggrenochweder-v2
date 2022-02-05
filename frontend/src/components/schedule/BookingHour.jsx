@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 
 import { useMutation, useQuery } from '@apollo/client';
 import { REGISTER_BOOKED_HOUR } from '../../GraphQL/Mutations';
 import { GET_BOOKED } from '../../GraphQL/Queries';
 
 const BookingHour = ({ id, hour, employee, date }) => {
-  const [bookHour, { data, error, loading }] = useMutation(REGISTER_BOOKED_HOUR);
+  const [bookHour, { data, error, loading }] = useMutation(REGISTER_BOOKED_HOUR, { errorPolicy: 'all' });
   const workerTime = useQuery(GET_BOOKED, {
     variables: {
       id: employee,
@@ -15,9 +15,8 @@ const BookingHour = ({ id, hour, employee, date }) => {
     }
   })
 
-  const [hide, setHide] = useState(false);
-
-  const bookThisHour = (e) => {
+  const [hide, setHide] = useState('available')
+  const hideButton = (e) => {
     bookHour({
       variables: {
         time: e.target.value,
@@ -26,39 +25,37 @@ const BookingHour = ({ id, hour, employee, date }) => {
         date: date
       }
     })
-    setHide(true)
+    let isHide = e.target.className;
+    if (isHide === 'available') {
+      setHide('booked')
+    }
+    return isHide;
   }
 
-  useEffect(() => {
-    if (workerTime.error) {
-      return console.log(workerTime.error);
-    }
-    else if (!workerTime.loading && workerTime.data !== null && workerTime.data.bookings.data.length !== 0) {
-      if (workerTime.data.bookings.data[0].attributes.time === hour) {
-        setHide(true)
-      }
-    }
-  }, [workerTime.data])
-
-  useEffect(() => {
-    if (data !== undefined) {
-      alert('Booked')
-    }
+  useLayoutEffect(() => {
+    if (error) return alert("Sorry... this is already booked.. its a bug.. we are fixing this as you reading this");
+    console.log('booked')
   }, [data])
 
-  return (
-    <>
-      {!hide &&
-        <button
-          value={hour}
-          className={`booking-${id + 1}`}
-          type='button'
-          onClick={bookThisHour}>
-          {hour}
-        </button>
-      }
-    </>
+  useLayoutEffect(() => {
+    if (workerTime.error) return console.log("error: ", workerTime.error);
+    if (!workerTime.loading && workerTime.data.bookings.data.length !== 0) {
+      console.log(workerTime.data.bookings.data[0].attributes.booked)
+      return setHide('booked');
+    }
+  }, [workerTime.data, hide, data])
 
+
+
+  return (
+    <button
+      value={hour}
+      id={`booking-${id + 1}`}
+      className={`${hide}`}
+      type='button'
+      onClick={(e) => hideButton(e)}>
+      {hour}
+    </button>
   );
 };
 

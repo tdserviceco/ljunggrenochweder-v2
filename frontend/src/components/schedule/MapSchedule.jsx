@@ -23,6 +23,7 @@ const MapSchedule = ({ workHours, date }) => {
   return (
     <>
       {employeeHours.loading && <Loader />}
+      {/* {!employeeHours.loading && date} */}
       {!employeeHours.loading && timeSchedule !== null && timeSchedule.map((time, key) => {
         return (
           <div className="employee-hours" key={key}>
