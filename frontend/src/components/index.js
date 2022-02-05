@@ -15,4 +15,6 @@ export { default as StepThree } from './booking-wizard/StepThree'
 export { default as Schedule } from './schedule/Schedule'
 export { default as ServiceList } from './services-list/ServiceList'
 export { default as PriceList } from './priceList/PriceList'
+
 export { default as Staffs } from './staffs/Staffs'
+export { default as Calender } from './calender/Calender'
