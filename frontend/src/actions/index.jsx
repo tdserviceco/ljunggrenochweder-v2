@@ -47,3 +47,10 @@ export const defaultBackground = data => {
     value: data
   }
 };
+
+export const selectedValues = values => {
+  return {
+    type: 'SELECTEDVALUES',
+    value: values
+  }
+} 

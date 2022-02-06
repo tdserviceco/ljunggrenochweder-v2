@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import BuildCalendar from './BuildCalendar';
 import MapSchedule from '../schedule/MapSchedule';
-const Calender = ({ workHours }) => {
+const Calender = () => {
   const [value, setValue] = useState(moment());
   const [calendar, setCalendar] = useState([]);
   const [clickedDate, setClickedDate] = useState(false);
@@ -82,7 +82,7 @@ const Calender = ({ workHours }) => {
         </div>
       )
       }
-      {clickedDate && <MapSchedule date={value.format("YYYY-MM-DD")} workHours={workHours} />}
+      {clickedDate && <MapSchedule date={value.format("YYYY-MM-DD")} />}
     </div >
   );
 };

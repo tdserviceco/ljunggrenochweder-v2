@@ -52,4 +52,13 @@ const workers = (state = null, action) => {
   }
 }
 
-export { categories, categoryId, serviceId, services, workersId, workers };
+const selectedValues = (state = [], action) => {
+  switch (action.type) {
+    case 'SELECTEDVALUES':
+      return action.value
+    default:
+      return state
+  }
+}
+
+export { categories, categoryId, serviceId, services, workersId, workers, selectedValues };

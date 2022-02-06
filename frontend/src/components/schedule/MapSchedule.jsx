@@ -3,14 +3,16 @@ import { useQuery } from '@apollo/client'
 import { GET_EMPLOYEE_SCHEDULE } from '../../GraphQL/Queries';
 import { Loader } from '..';
 import Markup from './Markup';
+import { useSelector } from 'react-redux';
 
-const MapSchedule = ({ workHours, date }) => {
+const MapSchedule = ({ date }) => {
 
   const [timeSchedule, setTimeSchedule] = useState(null);
+  const selected = useSelector(state => state.selectedValues);
   const employeeHours = useQuery(GET_EMPLOYEE_SCHEDULE, {
     variables: {
-      service: Number(workHours.serviceId),
-      employee: Number(workHours.workerId),
+      service: Number(selected.serviceId),
+      employee: Number(selected.workerId),
       date: date
     }
   });
