@@ -45,7 +45,6 @@
       .display-container-content {
         border: 0.0625rem solid $skyblue;
         border-radius: 1rem;
-        height: calc(100% + 5vh);
         width: 70%;
         margin: 1rem auto;
         background-color: $darkCherry;
@@ -68,9 +67,6 @@
 @media (min-width: 789px) {
   .staffs {
     .display-container.active {
-      .display-container-content {
-        height: calc(100% + 10vh);
-      }
       button {
         left: 5rem;
       }
@@ -81,9 +77,6 @@
 @media (min-width: 920px) {
   .staffs {
     .display-container.active {
-      .display-container-content {
-        height: calc(100% + 15vh);
-      }
       button {
         left: 5rem;
       }
@@ -118,20 +111,6 @@
       button {
         left: 10rem;
       }
-      .display-container-content {
-        width: 50%;
-        height: calc(100% + 8vh);
-      }
-    }
-  }
-}
-
-@media (min-width: 1175px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 16vh);
-      }
     }
   }
 }
@@ -139,35 +118,14 @@
 @media (min-width: 1366px) {
   .staffs {
     .containers {
-      max-width: 50%;
+      max-width: 25%;
     }
     .display-container.active {
       button {
-        left: 15rem;
+        left: 30rem;
       }
       .display-container-content {
-        width: 50%;
-        height: calc(100% + 25vh);
-      }
-    }
-  }
-}
-
-@media (min-width: 1636px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 30vh);
-      }
-    }
-  }
-}
-
-@media (min-width: 1920px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 40vh);
+        max-width: 25%;
       }
     }
   }

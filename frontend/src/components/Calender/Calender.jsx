@@ -9,7 +9,6 @@ import moment from 'moment';
 import BuildCalendar from './BuildCalendar';
 import MapSchedule from '../schedule/MapSchedule';
 const Calender = () => {
-  const [value, setValue] = useState(moment());
   const [calendar, setCalendar] = useState([]);
   const [clickedDate, setClickedDate] = useState(false);
   //Check if same day is selected
