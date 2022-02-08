@@ -58,7 +58,7 @@ const Home = () => {
     <main className="home" role="main" style={{ background: `url(${import.meta.env.VITE_APP_DOMAIN}${bg}) center/cover no-repeat` }}>
       <div className='home-container'>
         <h1>Welcome Home!</h1>
-        <h3>Have a seet by the fire</h3>
+        <h3>Have a seat by the fire</h3>
       </div>    
     </main>
   );

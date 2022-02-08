@@ -5,7 +5,7 @@ import { LOGIN_USER } from '../../GraphQL/Mutations';
 import { useMutation } from '@apollo/client';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
-const Login = () => {
+const Login = ({ state }) => {
 
   let navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const Login = () => {
   }, [data])
 
   return (
-    <form className='email-form' onSubmit={handleSubmit(authenticate)}>
+    <form className={`login-form ${state}`} onSubmit={handleSubmit(authenticate)}>
       <div className='form-wrapper'>
         <label htmlFor='email'>
           {/* <Icon icon="carbon:email" /> */}

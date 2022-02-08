@@ -5,7 +5,7 @@ import { CREATE_USER } from '../../GraphQL/Mutations';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 
-const RegisterForm = () => {
+const RegisterForm = ({ state }) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [addUser, { data, loading, error }] = useMutation(CREATE_USER);
   const [cookies, setCookie, removeCookie] = useCookies(['userProfile']);
@@ -36,7 +36,7 @@ const RegisterForm = () => {
   }, [data])
 
   return (
-    <form className='register-form' onSubmit={handleSubmit(add)}>
+    <form className={`register-form ${state}`} onSubmit={handleSubmit(add)}>
       <div className='register-wrapper'>
         <label htmlFor='username'>
           <span>För och efternamn</span>
