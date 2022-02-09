@@ -16,7 +16,7 @@ const Header = () => {
     preExit: true
   });
   const [registerEffect, toggleRegisterEffect] = useTransition({
-    timeout: 250,
+    timeout: 500,
     mountOnEnter: true,
     unmountOnExit: true,
     preEnter: true,

@@ -5,17 +5,23 @@
 	justify-content: center;
 	width: 100%;
 	height: 100vh;
-	transition: opacity .5s ease-in-out;
+	position: relative;
+	top: 0;
+	transition: all .5s ease-in-out;
 	&.preEnter{
+		top: -50px;
 		opacity: 0.5;
 	}
 	&.entered {
+		top: 0px;
 		opacity: 1;
 	}
 	&.preExit{
+		top: 50px;
 		opacity: 0.5;
 	}
 	&.exiting {
+		top: -50px;
 		opacity: 0;
 	}
 	.register-wrapper{

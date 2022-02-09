@@ -4,17 +4,24 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    transition: opacity .5s ease-in-out;
+    position: relative;
+    top: 0;
+    transition: all .5s ease-in-out;
+    z-index: -1;
     &.preEnter{
+        top: -50px;
         opacity: 0.5;
       }
       &.entered {
+        top: 0px;
         opacity: 1;
       }
       &.preExit{
+        top: 50px;
         opacity: 0.5;
       }
       &.exiting {
+        top: -50px;
         opacity: 0;
       }
     .form-wrapper{
