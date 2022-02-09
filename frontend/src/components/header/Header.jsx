@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTransition } from "react-transition-state";
 import { Login, Register } from '..';
+import NavigationMenu from './NavigationMenu'
 
 const Header = () => {
 
@@ -16,7 +17,14 @@ const Header = () => {
     preExit: true
   });
   const [registerEffect, toggleRegisterEffect] = useTransition({
-    timeout: 500,
+    timeout: 250,
+    mountOnEnter: true,
+    unmountOnExit: true,
+    preEnter: true,
+    preExit: true
+  });
+  const [navigationEffect, toggleNavigationEffect] = useTransition({
+    timeout: 250,
     mountOnEnter: true,
     unmountOnExit: true,
     preEnter: true,
@@ -31,14 +39,19 @@ const Header = () => {
     toggleRegister(!register);
     toggleRegisterEffect();
   };
+  const hamburgerButton =  () => {
+    toggleHamburger(!hamburger);
+    toggleNavigationEffect();
+  };
 
   const showLogin = loginEffect === "unmounted";
   const showRegister = registerEffect === "unmounted";
+  const showNavigation = navigationEffect === "unmounted";
 
   return (
     <header>
       <div className='header-wrapper'>
-        <div onClick={() => toggleHamburger(!hamburger)} className={`menu-btn`}>
+        <div onClick={() => hamburgerButton()} className={`menu-btn`}>
           <div className={`menu-btn-burger ${hamburger ? 'open' : ''}`}></div>
         </div>
         <div className='title-and-log-reg'>
@@ -50,6 +63,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {!showNavigation && <NavigationMenu state={ navigationEffect }/>}
       {!showLogin && <Login state={ loginEffect }/>}
       {!showRegister &&  <Register state={ registerEffect }/>}
     </header>

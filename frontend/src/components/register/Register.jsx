@@ -36,7 +36,7 @@ const RegisterForm = ({ state }) => {
   }, [data])
 
   return (
-    <form className={`register-form ${state}`} onSubmit={handleSubmit(add)}>
+    <form className={`register-form ${ state }`} onSubmit={handleSubmit(add)}>
       <div className='register-wrapper'>
         <label htmlFor='username'>
           <span>För och efternamn</span>

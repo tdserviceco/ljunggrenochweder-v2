@@ -35,7 +35,7 @@ const Login = ({ state }) => {
   }, [data])
 
   return (
-    <form className={`login-form ${state}`} onSubmit={handleSubmit(authenticate)}>
+    <form className={`login-form ${ state }`} onSubmit={handleSubmit(authenticate)}>
       <div className='form-wrapper'>
         <label htmlFor='email'>
           {/* <Icon icon="carbon:email" /> */}
