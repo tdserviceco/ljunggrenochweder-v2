@@ -1,9 +1,9 @@
 import React from 'react';
 import { Calender } from '..';
 
-const Schedule = ({ workHours }) => {
+const Schedule = () => {
   return (
-    <Calender workHours={workHours} />
+    <Calender />
   );
 };
 

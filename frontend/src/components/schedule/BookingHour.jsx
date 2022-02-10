@@ -34,7 +34,7 @@ const BookingHour = ({ id, hour, employee, date }) => {
 
   useLayoutEffect(() => {
     if (error) return alert("Sorry... this is already booked.. its a bug.. we are fixing this as you reading this");
-    console.log('booked')
+
   }, [data])
 
   useLayoutEffect(() => {
