@@ -4,8 +4,8 @@ import { useQuery } from '@apollo/client';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux';
 import { BACKGROUND_IMAGE } from '../../GraphQL/Queries';
-import { ServiceList, Staffs } from '../../components';
-import { defaultBackground } from '../../actions';
+import { ServiceList, Staffs } from '../../Components';
+import { defaultBackground } from '../../Redux/actions';
 
 
 const Home = () => {

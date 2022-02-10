@@ -77,6 +77,7 @@ const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($employee: ID!, $service: I
         name
         services(filters: { id: { eq: $service } }) {
           data {
+            id
             attributes {
               name
             }
@@ -98,7 +99,7 @@ const GET_EMPLOYEE_SCHEDULE = gql`query employeeInfo($employee: ID!, $service: I
   }
 }`
 
-const GET_BOOKED = gql`query employeeTime(
+const IS_BOOKED = gql`query employeeTime(
   $id: ID!
   $time: String!
   $booked: Boolean!
@@ -150,6 +151,6 @@ export {
   GET_ALL_WORKERS_BASED_ON_SERVICE_ID,
   GET_EMPLOYEE_SCHEDULE,
   GET_ALL_SERVICES,
-  GET_BOOKED,
+  IS_BOOKED,
   GET_STAFFS
 }

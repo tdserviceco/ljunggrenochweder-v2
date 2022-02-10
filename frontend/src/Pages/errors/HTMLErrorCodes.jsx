@@ -1,5 +1,5 @@
 import React from 'react';
-import { Errors } from '../../components';
+import { Errors } from '../../Components';
 const HTMLErrorCodes = ({ status }) => {
   return (
     <section className='errors'>

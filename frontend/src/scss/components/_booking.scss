@@ -1,11 +1,4 @@
 @use "../abstracts/" as *;
-.booking {
-  margin-top: 5rem;
-  .booked {
-    display: none;
-  }
-
-  .available {
-    display: block;
-  }
+.hide {
+  display: none;
 }

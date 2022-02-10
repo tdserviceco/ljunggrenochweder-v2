@@ -2,7 +2,7 @@
 .calendar {
   background: $leatherBlack;
   font-family: $gothicA1;
-  .year-and-month-container {
+  .calendar-header {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -21,10 +21,21 @@
   .day-names {
     display: flex;
     justify-content: space-around;
+    flex-grow: 1;
+    background: $placeholderGrey;
+    border-bottom: $leatherBlack 1px solid;
+    margin-bottom: 1rem;
   }
 
   margin-top: 5rem;
+  .old-day {
+    cursor: default;
+  }
   .day {
+    cursor: pointer;
+  }
+  .day,
+  .old-day {
     position: relative;
     width: calc(100% / 7);
     height: 44px;
@@ -33,7 +44,6 @@
     margin: 0;
     z-index: 1;
     text-align: center;
-    cursor: pointer;
     .today {
       background: yellow;
     }
