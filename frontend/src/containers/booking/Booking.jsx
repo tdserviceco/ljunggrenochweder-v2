@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { StepOne, StepTwo, StepThree, Schedule } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { categories, services, workers, workHours } from '../../actions';
+import { categories, services, workers, selectedValues } from '../../actions';
 import { useQuery } from '@apollo/client'
 import { GET_ALL_CATEGORIES, GET_ALL_SERVICES_BASED_ON_CATEGORY_ID, GET_ALL_WORKERS_BASED_ON_SERVICE_ID } from '../../GraphQL/Queries';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'
 
 const Booking = () => {
+  const selected = useSelector(state => state.selectedValues)
   const dispatch = useDispatch();
-  const workHoursScheme = useSelector(state => state.workHours);
   let navigator = useNavigate()
   const [cookies] = useCookies(['userProfile']);
-
   const formSubmit = (form) => {
     let formValues = {};
     form.preventDefault()
@@ -21,8 +20,7 @@ const Booking = () => {
       serviceId: elements[1].value,
       workerId: elements[2].value
     }
-    console.log(formValues)
-    dispatch(workHours(formValues))
+    dispatch(selectedValues(formValues))
   }
 
   const cateID = useSelector(state => state.categoryId);
@@ -93,7 +91,7 @@ const Booking = () => {
         }
         <button type="submit">Sök tid</button>
       </form>
-      {workHoursScheme !== null &&
+      {selected.length !== 0 &&
         <Schedule />
       }
     </section>

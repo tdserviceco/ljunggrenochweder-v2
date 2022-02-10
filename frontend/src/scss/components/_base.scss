@@ -14,6 +14,9 @@ picture {
 }
 
 body {
+	&.no-scroll {
+		overflow: hidden;
+	}
 	font-family: $roboto;
 	color: $boneWhite;
 	#root {
@@ -47,11 +50,10 @@ body {
 	}
 
 	section:first-child {
-		margin-top: 2.5rem;
+		margin-top: 0 0 1rem;
 	}
 
 	section {
-		margin: 1rem;
 		padding: 1rem;
 	}
 }

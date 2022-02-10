@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "time": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "booked": {
       "type": "boolean",

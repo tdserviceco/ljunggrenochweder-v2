@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useScrollEffect } from '../../assets/custom-hooks';
 import { useQuery } from '@apollo/client'
 import { BACKGROUND_IMAGE } from '../../GraphQL/Queries';
 import { Loader } from '../../components';
@@ -21,7 +20,6 @@ const Structure = () => {
     !loading && setMediaData(data.uploadFile.data.attributes)
   }
 
-  const exampleFunc = useScrollEffect;
   useEffect(() => {
     document.title = 'Struktur av sidan!'
     getMedia()
@@ -45,19 +43,16 @@ const Structure = () => {
         <p>Remember, use the blockquote to indent something only if you can't use CSS. The true purpose of the blockquote element is to mark text that is a long quote!</p>
       </blockquote>
 
-      <div className='lazy-load-effect'>
-        <div className={`${useScrollEffect('right')} right fade-in`}>
-          <ul role="list">
-            UL with role of list
-            <li>
-              List item
-            </li>
-            <li>
-              <Link to="#">List item with a Link</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <ul role="list">
+        UL with role of list
+        <li>
+          List item
+        </li>
+        <li>
+          <Link to="#">List item with a Link</Link>
+        </li>
+      </ul>
       {loading && <Loader />}
       {
         !loading && mediaData !== undefined &&
@@ -75,19 +70,16 @@ const Structure = () => {
         </div>
       }
 
-      <div className='lazy-load-effect'>
-        <div className={`${useScrollEffect('left')} left fade-in`}>
-          <ul role="list">
-            UL with role of list 2
-            <li>
-              List item 2
-            </li>
-            <li>
-              <Link to="#">List item with a Link 2</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <ul role="list">
+        UL with role of list 2
+        <li>
+          List item 2
+        </li>
+        <li>
+          <Link to="#">List item with a Link 2</Link>
+        </li>
+      </ul>
+
 
     </section >
   );

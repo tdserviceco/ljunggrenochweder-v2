@@ -10,12 +10,12 @@ const PriceList = ({ allServices }) => {
   }
 
   return (
-    <section className='price-list'>
+    <>
       <h2>Lista av tjänster</h2>
       <ul role="list">
         {mapServices()}
       </ul>
-    </section>
+    </>
   );
 };
 

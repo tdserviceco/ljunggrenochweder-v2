@@ -48,9 +48,9 @@ export const defaultBackground = data => {
   }
 };
 
-export const workHours = data => {
+export const selectedValues = values => {
   return {
-    type: 'WORKHOURS',
-    value: data
+    type: 'SELECTEDVALUES',
+    value: values
   }
-}
+} 
