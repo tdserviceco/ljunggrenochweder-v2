@@ -1,8 +1,57 @@
-body section.login {
-    background: rgb(232, 75, 215);
-    background: linear-gradient(180deg, hsl(306, 77%, 60%) 0%, hsl(290, 39%, 79%) 49%, hsl(294, 37%, 56%) 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+@use "../abstracts/" as *;
 
-    margin-top: 0;
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    top: 0;
+    transition: all .5s ease-in-out;
+    z-index: -1;
+    &.preEnter{
+        top: -50px;
+        opacity: 0.5;
+      }
+      &.entered {
+        top: 0px;
+        opacity: 1;
+      }
+      &.preExit{
+        top: 50px;
+        opacity: 0.5;
+      }
+      &.exiting {
+        top: -50px;
+        opacity: 0;
+      }
+    .form-wrapper{
+        margin-top: 5px;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        .email-field,
+        .password-field{
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+    }
+    button{
+        transition: all 250ms ease-in;
+        margin: auto;
+        background-color: $darkCherry;
+        border: 2px solid $leatherBlack;
+        border-radius: 5px;
+        color: $boneWhite;
+        font-weight: bold;
+        padding: 0.5rem;
+        width: 10rem;
+        margin-top: 0.5rem;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: $leatherBlack;
+        border: 2px solid $darkCherry;
+    }     
 }
