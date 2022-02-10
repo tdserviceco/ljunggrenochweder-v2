@@ -61,11 +61,12 @@ const Header = () => {
             <span>/</span>
             <button className={`register-button ${login ? 'disable' : ''}`} onClick={() => registerButton() }>Registrera</button>
           </div>
+
         </div>
       </div>
       {!showNavigation && <NavigationMenu state={ navigationEffect }/>}
       {!showLogin && <Login state={ loginEffect }/>}
-      {!showRegister &&  <Register state={ registerEffect }/>}
+      {!showRegister && <Register state={ registerEffect }/>}
     </header>
   );
 };
