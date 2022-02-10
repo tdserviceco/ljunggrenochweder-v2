@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTransition } from "react-transition-state";
+import { useNavigate } from 'react-router-dom';
 import { Login, Register } from '..';
 import NavigationMenu from './NavigationMenu';
 import { useCookies } from 'react-cookie';
-import { Icon } from '@iconify/react';
-import { useEffect } from 'react';
+/* import { Icon } from '@iconify/react'; */
 
 
 const Header = () => {
@@ -17,6 +17,7 @@ const Header = () => {
     { image: "/img/tyrannosaurus" }
   ])
 
+  let navigate = useNavigate();
   const [profile, setProfile] = useState('')
 
   useEffect(() => {
@@ -88,7 +89,7 @@ const Header = () => {
               <span>/</span>
               <button className={`register-button ${login ? 'disable' : ''}`} onClick={() => registerButton()}>Registrera</button>
             </div> :
-            <div className='user-avatar'>
+            <div className='user-avatar' onClick={() => navigate('/user')}>
               {/* Loop time baby */}
               <img className="avartar" src={`${profile.image}.png`} alt="animal" />
               <h3>{cookies.userProfile.username}</h3>

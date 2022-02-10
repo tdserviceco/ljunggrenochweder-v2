@@ -9,3 +9,6 @@ export { default as HTMLErrorCodes } from './errors/HTMLErrorCodes'
 
 //Booking page
 export { default as Booking } from './booking/Booking'
+
+//User page
+export { default as UserPage } from './user/UserPage'
