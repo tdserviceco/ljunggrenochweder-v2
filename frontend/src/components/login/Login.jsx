@@ -30,7 +30,7 @@ const Login = ({ state }) => {
         id: data.login.user.id
       }
       setCookie('userProfile', cookieValues);
-      navigate('/booking')
+      window.location.href = '/booking'
     }
   }, [data])
 

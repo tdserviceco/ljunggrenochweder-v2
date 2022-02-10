@@ -7,15 +7,12 @@ import {
   StepThree
 } from '../../Components';
 import { useCookies } from 'react-cookie';
-import { useNavigate } from 'react-router-dom';
 
 const Booking = () => {
   const [cookies, setCookie] = useCookies(['userProfile']);
 
-  let navigate = useNavigate();
-
   useEffect(() => {
-    if (cookies.userProfile === undefined) navigate("/403");
+    if (cookies.userProfile === undefined) window.location.href = '/403';
   }, [cookies])
 
   const [value, setValue] = useState(moment());
@@ -49,7 +46,7 @@ const Booking = () => {
   }
 
   return (
-    <section>
+    <section className='booking'>
       <div className="progress"><progress max="3" value={step} /></div>
       {step === 0 && <h2>Välkommen till bokning tjänsten, Följ stegen och välj sedan på kalendern tid</h2>}
       <button type="button" disabled={step === 3 ? true : false} onClick={() => nextStep()}>Näste steg</button>

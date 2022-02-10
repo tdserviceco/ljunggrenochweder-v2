@@ -8,15 +8,13 @@ import { ServiceList, Staffs, Jumbotron } from '../../Components';
 import { defaultBackground } from '../../Redux/actions';
 
 const Home = () => {
-
+  console.log(window.location.host)
   const backgroundImage = useQuery(BACKGROUND_IMAGE, {
     variables: {
       id: 1
     }
   });
 
-
-  console.log('hej')
   const dispatch = useDispatch();
   const bg = useSelector(state => state.defaultBackground);
 

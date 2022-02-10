@@ -8,9 +8,9 @@ function NavigationMenu({ state }) {
   const [cookies, setCookie, removeCookie] = useCookies(['userProfile']);
 
   const logOut = () => {
-    removeCookie('userProfile');
+    removeCookie('userProfile');  
     navigate('/')
-  }
+  };
 
   return (
       <section className={`navigation-menu ${ state }`}>
@@ -24,7 +24,7 @@ function NavigationMenu({ state }) {
           <Link to='/'><h2>Om oss</h2></Link>
         </div>
         <div className='logout'>
-          <button type='button' onClick={logOut}><h2>Logga ut</h2></button>
+          <button type='button' onClick={logOut}>Logga ut</button>
         </div>
       </section>
     )

@@ -31,7 +31,7 @@ const Register = ({ state }) => {
         id: data.register.user.id
       }
       setCookie('userProfile', cookieValues);
-      navigate('/')
+      window.location.href = '/booking'
     }
   }, [data])
 
