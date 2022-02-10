@@ -15,6 +15,8 @@ const Home = () => {
     }
   });
 
+
+  console.log('hej')
   const dispatch = useDispatch();
   const bg = useSelector(state => state.defaultBackground);
 
