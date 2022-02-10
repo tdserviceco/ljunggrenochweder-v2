@@ -4,9 +4,8 @@ import { useQuery } from '@apollo/client';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from 'react-redux';
 import { BACKGROUND_IMAGE } from '../../GraphQL/Queries';
-import { ServiceList, Staffs } from '../../Components';
+import { ServiceList, Staffs, Jumbotron } from '../../Components';
 import { defaultBackground } from '../../Redux/actions';
-
 
 const Home = () => {
 
@@ -47,11 +46,8 @@ const Home = () => {
   }, [backgroundImage.data, small, medium, large]);
 
   return (
-    <main className="home" role="main" style={{ background: `url(${import.meta.env.VITE_APP_DOMAIN}${bg}) center/cover no-repeat` }}>
-      <div className='home-container'>
-        <h1>Welcome Home!</h1>
-        <h3>Have a seat by the fire</h3>
-      </div>
+    <main className="home" role="main" style={{ background: `url(${import.meta.env.VITE_APP_DOMAIN}${bg}) center/cover fixed no-repeat` }}>
+      <Jumbotron />
       <ServiceList />
       <Staffs />
     </main>

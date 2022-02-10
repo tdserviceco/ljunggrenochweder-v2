@@ -19,3 +19,5 @@ export { default as StepOne } from './steps/StepOne'
 export { default as StepTwo } from './steps/StepTwo'
 export { default as StepThree } from './steps/StepThree'
 
+export { default as Jumbotron } from './jumbotron/Jumbotron'
+
