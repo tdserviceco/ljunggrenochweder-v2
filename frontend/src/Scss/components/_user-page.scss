@@ -23,7 +23,7 @@
     justify-content: center;
     width: 100%;
   }
-  .remove-this-booking{
+  .remove-this-booking {
     margin-bottom: 1rem;
   }
   .delete-me,
@@ -32,6 +32,9 @@
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
+    svg {
+      pointer-events: none;
+    }
   }
 
   .user-booked-times {
@@ -43,7 +46,7 @@
     border-radius: 0.5rem;
     border: 0.0625rem solid hsl(0, 0%, 0%);
     .user-booked-times-info {
-      overflow-y: scroll;
+      overflow-y: auto;
       background-color: hsl(240, 1%, 16%);
       align-items: center;
       height: 90%;
