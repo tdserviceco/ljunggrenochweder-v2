@@ -29,11 +29,12 @@ const LOGIN_USER = gql`mutation UserValue($email: String!, $password: String!) {
 const REGISTER_BOOKED_HOUR = gql`mutation 
 CreateBookingForThisHour(
   $time: String!,
-  $wID: ID!,
+  $eID: ID!,
   $booked: Boolean!,
   $date: String!
+  $uID: ID!
   ) {
-    createBooking(data: {time: $time, booked: $booked, worker: $wID, date: $date}) {
+    createBooking(data: {time: $time, booked: $booked, worker: $eID, date: $date, username: $uID}) {
     data {
       id
       attributes {
@@ -43,5 +44,14 @@ CreateBookingForThisHour(
   }
 }`
 
+const DELETE_USER = gql`mutation
+DeleteBookingHour(
 
-export { CREATE_USER, LOGIN_USER, REGISTER_BOOKED_HOUR }
+) {
+  deleteBooking(){
+  }
+}
+`
+
+
+export { CREATE_USER, LOGIN_USER, REGISTER_BOOKED_HOUR, DELETE_USER }
