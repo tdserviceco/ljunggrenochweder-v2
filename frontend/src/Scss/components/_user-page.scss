@@ -1,41 +1,123 @@
 @use "../abstracts/" as *;
-
-.user-page{
-  height: 100%;
-  margin-top: 5rem;
-  background-color: $leatherBlack;
-  padding: 5rem;
+.container,
+.user-page,
+.user-info,
+.user-booked-times,
+.user-booked-times-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  .user-info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .user-booked-times{
-    background-color: rgba(110, 43, 43, 0.774);
-    display: flex;
+}
+
+.user-page {
+  height: 100vh;
+  width: 100%;
+  margin-top: 5rem;
+  background-color: #282829;
+  align-items: flex-start;
+
+  .user-info {
+    > * {
+      padding: 1rem 0;
+    }
+    text-transform: uppercase;
     align-items: center;
     justify-content: center;
-    height: 50rem;
-    width: 30rem;
+    width: 100%;
+  }
+  .delete-me,
+  .remove-this-booking {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .user-booked-times {
+    background-color: rgba(110, 43, 43, 0.774);
+    align-items: center;
+    justify-content: center;
     border-radius: 0.5rem;
-    border: 1px solid black;
-    .user-booked-times-info{
-      background-color: $leatherBlack;
-      display: flex;
-      flex-direction: column;
+    border: 0.0625rem solid hsl(0, 0%, 0%);
+    .user-booked-times-info {
+      background-color: hsl(240, 1%, 16%);
       align-items: center;
       height: 90%;
       width: 90%;
       border-radius: 0.3rem;
-      border: 1px solid black;
+      border: 0.0625rem solid #000000;
       padding: 1rem;
-      h3{
-        margin-bottom: 0.5rem;
-      }
+    }
+  }
+  button {
+    background: none;
+    color: $boneWhite;
+    border: none;
+    cursor: pointer;
+    transition: color 250ms ease-in;
+    &:hover,
+    &:focus {
+      color: $cherryRed;
     }
   }
 }
+
+// .user-page {
+//   height: 100%;
+//   margin-top: 5rem;
+//   background-color: $leatherBlack;
+//   padding: 5rem;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-evenly;
+
+//   .user-info {
+//     text-transform: uppercase;
+//     flex-direction: column;
+//     align-items: center;
+//   }
+
+//   .remove-this-booking,
+//   .delete-me {
+//     width: 100%;
+//     justify-content: space-evenly;
+//   }
+
+//   button {
+//     background: none;
+//     color: $boneWhite;
+//     &:hover, &:focus {
+
+//     }
+//     border: $leatherBlack solid 0.0625rem;
+//     cursor: pointer;
+//     padding: 0;
+//     margin: 0;
+//     svg {
+//       @include sizeOfIcon(100%, 50%);
+//     }
+//   }
+
+//   .user-booked-times {
+//     background-color: rgba(110, 43, 43, 0.774);
+//     align-items: center;
+//     justify-content: center;
+//     height: 50rem;
+//     width: 30rem;
+//     border-radius: 0.5rem;
+//     border: 0.0625rem solid black;
+
+//     .user-booked-times-info {
+//       background-color: $leatherBlack;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       height: 90%;
+//       width: 90%;
+//       border-radius: 0.3rem;
+//       border: 0.0625rem solid black;
+//       padding: 1rem;
+//       h3 {
+//         margin-bottom: 0.5rem;
+//       }
+//     }
+//   }
+// }

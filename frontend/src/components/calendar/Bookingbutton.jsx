@@ -36,20 +36,15 @@ const Bookingbutton = ({ time, date, eID }) => {
     if (error) return alert("Tiden är redan taget");
     if (data === undefined) { return }
     else {
-      // console.log('3')
       setHide(false)
       alert("Bokat");
     }
   }, [data])
 
-  // useEffect(() => {
-  //   console.log("date with 2")
-  // }, [date, data, isBookedQuery.data])
-
   useLayoutEffect(() => {
-    // console.log('1')
+
     !isBookedQuery.loading && isBookedQuery.data !== null && isBookedQuery.data.bookings.data.length !== 0 ? setHide(false) : setHide(true)
-    // !isBookedQuery.loading && isBookedQuery.data !== null && isBookedQuery.data.bookings.data.length !== 0 && console.log("isBookedQuery: ", isBookedQuery.data)
+
   }, [isBookedQuery.data])
 
   return (

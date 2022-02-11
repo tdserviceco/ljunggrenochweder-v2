@@ -45,13 +45,13 @@ CreateBookingForThisHour(
 }`
 
 const DELETE_USER = gql`mutation
-DeleteBookingHour(
-
-) {
-  deleteBooking(){
+DeleteBookingHour($bookingID: ID!) {
+  deleteBooking(id: $bookingID){
+    data {
+      id
+    }
   }
-}
-`
+}`
 
 
 export { CREATE_USER, LOGIN_USER, REGISTER_BOOKED_HOUR, DELETE_USER }

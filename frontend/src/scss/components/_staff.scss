@@ -13,12 +13,12 @@
     left: 1rem;
     color: $leatherBlack;
     border: 0.0625rem solid $leatherBlack;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0.5rem 0.938rem rgba(0, 0, 0, 0.5);
     background: none;
-    height: 33px;
+    height: 2.063rem;
     margin: 0;
-    padding: 5px;
-    width: 33px;
+    padding: 0.313rem;
+    width: 2.063rem;
     svg {
       pointer-events: none;
     }

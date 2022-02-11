@@ -1,5 +1,14 @@
 @use "./abstracts/" as *;
 
+@media (min-width: 320px) {
+  .user-page {
+    align-items: center;
+    .delete-me {
+      max-width: calc(100% - 5rem);
+    }
+  }
+}
+
 /* Tablet */
 @media (min-width: 600px) {
   body {
@@ -91,6 +100,15 @@
 
 @media (min-width: 1366px) {
   .staffs {
+    .display-container.active {
+      button {
+        left: calc(100vw - 90vw);
+      }
+      .display-container-content {
+        max-width: 40%;
+      }
+    }
+
     .containers {
       max-width: 50%;
     }
