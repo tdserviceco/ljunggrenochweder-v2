@@ -144,6 +144,25 @@ const GET_STAFFS = gql`query {
   }
 }`
 
+const GET_ALL_USERS_BOOKING = gql`query loadAllBookings($uID: ID!) {
+  bookings(filters: { username: { id: { eq: $uID } } }) {
+    data {
+      id
+      attributes {
+        worker {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
+        date
+        time
+      }
+    }
+  }
+}`
+
 export {
   BACKGROUND_IMAGE,
   GET_ALL_CATEGORIES,
@@ -152,5 +171,6 @@ export {
   GET_EMPLOYEE_SCHEDULE,
   GET_ALL_SERVICES,
   IS_BOOKED,
-  GET_STAFFS
+  GET_STAFFS,
+  GET_ALL_USERS_BOOKING
 }

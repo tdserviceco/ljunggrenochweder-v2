@@ -9,7 +9,6 @@ export { default as AccessDenied } from './errors/AccessDenied'
 export { default as NoMatch } from './errors/NoMatch'
 
 export { default as ServiceList } from './services-list/ServiceList'
-export { default as PriceList } from './priceList/PriceList'
 
 export { default as Staffs } from './staffs/Staffs'
 
@@ -21,3 +20,4 @@ export { default as StepThree } from './steps/StepThree'
 
 export { default as Jumbotron } from './jumbotron/Jumbotron'
 
+export { default as ListOfBookings } from './user/ListOfBookings'

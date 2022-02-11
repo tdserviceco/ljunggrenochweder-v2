@@ -23,7 +23,7 @@
     justify-content: space-around;
     flex-grow: 1;
     background: $placeholderGrey;
-    border-bottom: $leatherBlack 1px solid;
+    border-bottom: $leatherBlack 0.0625rem solid;
     margin-bottom: 1rem;
   }
 
@@ -38,7 +38,7 @@
   .old-day {
     position: relative;
     width: calc(100% / 7);
-    height: 44px;
+    height: 2.75rem; //44px
     display: inline-block;
     padding: 0;
     margin: 0;

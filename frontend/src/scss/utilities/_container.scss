@@ -1,31 +1,7 @@
-@mixin grid-area-loop {
-  @for $i from 1 through 12 {
-    &:nth-child(#{$i}) {
-      grid-area: entry#{$i};
-    }
-  }
-}
-
 @mixin container($type) {
   @if ($type) == "grid" {
     display: grid;
   } @else {
     display: flex;
-  }
-}
-
-@mixin containerMozaic {
-  &.mosaic {
-    @include container(grid);
-    grid-template-areas: "";
-    gap: 0.5rem;
-    .box {
-      @include grid-area-loop;
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
   }
 }

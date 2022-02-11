@@ -1,5 +1,14 @@
 @use "./abstracts/" as *;
 
+@media (min-width: 320px) {
+  .user-page {
+    align-items: center;
+    .delete-me {
+      max-width: calc(100% - 5rem);
+    }
+  }
+}
+
 /* Tablet */
 @media (min-width: 600px) {
   body {
@@ -45,7 +54,6 @@
       .display-container-content {
         border: 0.0625rem solid $skyblue;
         border-radius: 1rem;
-        height: calc(100% + 5vh);
         width: 70%;
         margin: 1rem auto;
         background-color: $darkCherry;
@@ -60,32 +68,6 @@
         left: 1rem;
         color: $boneWhite;
         border-color: $boneWhite;
-      }
-    }
-  }
-}
-
-@media (min-width: 789px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 10vh);
-      }
-      button {
-        left: 5rem;
-      }
-    }
-  }
-}
-
-@media (min-width: 920px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 15vh);
-      }
-      button {
-        left: 5rem;
       }
     }
   }
@@ -113,62 +95,22 @@
       width: 70%;
       margin: 0 auto;
     }
-
-    .display-container.active {
-      button {
-        left: 10rem;
-      }
-      .display-container-content {
-        width: 50%;
-        height: calc(100% + 8vh);
-      }
-    }
-  }
-}
-
-@media (min-width: 1175px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 16vh);
-      }
-    }
   }
 }
 
 @media (min-width: 1366px) {
   .staffs {
-    .containers {
-      max-width: 50%;
-    }
     .display-container.active {
       button {
-        left: 15rem;
+        left: calc(100vw - 90vw);
       }
       .display-container-content {
-        width: 50%;
-        height: calc(100% + 25vh);
+        max-width: 40%;
       }
     }
-  }
-}
 
-@media (min-width: 1636px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 30vh);
-      }
-    }
-  }
-}
-
-@media (min-width: 1920px) {
-  .staffs {
-    .display-container.active {
-      .display-container-content {
-        height: calc(100% + 40vh);
-      }
+    .containers {
+      max-width: 50%;
     }
   }
 }
