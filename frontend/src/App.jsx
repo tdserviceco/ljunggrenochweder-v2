@@ -11,7 +11,7 @@ const App = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/structure" element={<Structure />} />
         <Route path="/booking" element={<Booking />} />
-        <Route path="/user" element={<UserPage />} />
+        <Route path="/user/:username" element={<UserPage />} />
         <Route path="*" element={<Navigate to="404" />} />
         <Route path="/404" element={<HTMLErrorCodes status={404} />} />
         <Route path="/403" element={<HTMLErrorCodes status={403} />} />

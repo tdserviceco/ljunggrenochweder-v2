@@ -2,7 +2,7 @@ import React from 'react';
 import List from './List';
 
 
-const ListOfBookings = ({ lists, bookID }) => {
+const ListOfBookings = ({ lists }) => {
 
   return (
     <div className='remove-this-booking'>
