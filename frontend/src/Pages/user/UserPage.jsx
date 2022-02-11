@@ -5,9 +5,11 @@ import { GET_ALL_USERS_BOOKING } from '../../GraphQL/Queries';
 import { useCookies } from 'react-cookie';
 import { ListOfBookings, Loader } from '../../Components'
 
-function UserPage() {
+const UserPage = () => {
+
   const [cookies] = useCookies(['userProfile'])
   const [lists, setLists] = useState([])
+  const [denied, setDenied] = useState(false);
   const { data, error, loading } = useQuery(GET_ALL_USERS_BOOKING, {
     variables: {
       uID: cookies.userProfile.id
@@ -20,7 +22,13 @@ function UserPage() {
   }, [data])
 
   const removeUser = () => {
-
+    let isExecuted = confirm("Vid din egna impulsiva förmåga, vågar du gå vidare?");
+    if (isExecuted) {
+      let isExecuted2 = confirm("Är du vid drottningens oäktings namn säker!?");
+      if (isExecuted2) {
+        setDenied(true)
+      }
+    }
   }
 
   return (
@@ -48,7 +56,9 @@ function UserPage() {
           </div>
         </div>
       </div>
-
+      <div className={`denied ${denied ? 'display' : ''}`}>
+        <h2>HA NEKAD SOM DU INTE FICK KOMMA IN TILL SYSTEMET!</h2>
+      </div>
     </section>
   )
 }
