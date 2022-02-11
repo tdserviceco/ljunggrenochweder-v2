@@ -44,7 +44,7 @@ CreateBookingForThisHour(
   }
 }`
 
-const DELETE_USER = gql`mutation
+const DELETE_BOOKING = gql`mutation
 DeleteBookingHour($bookingID: ID!) {
   deleteBooking(id: $bookingID){
     data {
@@ -54,4 +54,4 @@ DeleteBookingHour($bookingID: ID!) {
 }`
 
 
-export { CREATE_USER, LOGIN_USER, REGISTER_BOOKED_HOUR, DELETE_USER }
+export { CREATE_USER, LOGIN_USER, REGISTER_BOOKED_HOUR, DELETE_BOOKING }
