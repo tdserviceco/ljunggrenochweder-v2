@@ -9,6 +9,7 @@
 }
 
 .user-page {
+  padding: 0;
   width: 100%;
   margin-top: 5rem;
   background-color: #282829;
@@ -38,8 +39,9 @@
   }
 
   .user-booked-times {
-    height: 50%;
+    height: 50vh;
     width: 90vw;
+    padding-bottom: 1.5rem;
     background-color: rgba(110, 43, 43, 0.774);
     align-items: center;
     justify-content: center;

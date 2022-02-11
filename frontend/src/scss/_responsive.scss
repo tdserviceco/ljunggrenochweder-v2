@@ -26,6 +26,10 @@
     }
   }
 
+  .booking {
+    padding: 5rem;
+  }
+
   .staffs {
     .containers {
       grid-template-columns: repeat(2, 1fr);
@@ -88,6 +92,10 @@
     p {
       font-size: $p + 0.125rem;
     }
+  }
+
+  .booking {
+    padding: 5rem 15rem;
   }
 
   .staffs {

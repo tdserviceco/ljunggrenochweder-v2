@@ -1,9 +1,84 @@
 @use "../abstracts/" as *;
-.hide {
-  display: none;
-}
 
-.booking{
+.booking {
+  .hide {
+    display: none;
+  }
+  progress[value] {
+    width: 100%;
+    color: $cherryRed;
+    transition: all 500ms ease-out;
+    &.complete {
+      color: greenyellow;
+    }
+  }
+
+  .finished {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    button {
+      @include standardButton;
+    }
+  }
+
+  > h2 {
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  button {
+    background: none;
+    color: $boneWhite;
+    border: none;
+    cursor: pointer;
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  select {
+    width: 100%;
+  }
+
+  .buttons {
+    margin-top: 1rem;
+    @include container("grid");
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6256rem;
+    button {
+      @include standardButton;
+    }
+  }
+
+  [class^="step-"] {
+    h2 {
+      text-align: center;
+      margin: 1rem;
+    }
+  }
+
+  .booking-buttons {
+    text-align: center;
+    h2 {
+      margin-top: 2rem;
+    }
+  }
+
+  .wrapper {
+    @include container("flex");
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    > :first-child {
+      justify-items: flex-start;
+    }
+    > :last-child {
+      justify-items: flex-end;
+    }
+  }
+
   margin-top: 5rem;
-  padding: 5rem;
+  padding: 1rem;
 }

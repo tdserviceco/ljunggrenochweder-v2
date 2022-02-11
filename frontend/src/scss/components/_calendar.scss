@@ -1,5 +1,6 @@
 @use "../abstracts/" as *;
 .calendar {
+  margin-top: 2rem;
   background: $leatherBlack;
   font-family: $gothicA1;
   .calendar-header {
@@ -27,7 +28,11 @@
     margin-bottom: 1rem;
   }
 
-  margin-top: 5rem;
+  .week {
+    @include container("grid");
+    grid-template-columns: repeat(7, calc(100% / 7));
+  }
+
   .old-day {
     cursor: default;
   }
@@ -36,24 +41,14 @@
   }
   .day,
   .old-day {
-    position: relative;
-    width: calc(100% / 7);
-    height: 2.75rem; //44px
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-    z-index: 1;
+    width: 100%;
     text-align: center;
-    .today {
-      background: yellow;
-    }
-
+    border: 0.0625rem solid rgba(0, 0, 0, 0);
     .before {
       background: $placeholderGrey;
     }
-
-    .selected {
-      background: green;
-    }
+  }
+  .selected {
+    background-color: #5257da;
   }
 }

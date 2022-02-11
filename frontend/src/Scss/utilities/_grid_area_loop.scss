@@ -1,5 +1,5 @@
-@mixin grid-area-loop {
-  @for $i from 1 through 12 {
+@mixin grid-area-loop($amount) {
+  @for $i from 1 through $amount {
     &:nth-child(#{$i}) {
       grid-area: entry#{$i};
     }

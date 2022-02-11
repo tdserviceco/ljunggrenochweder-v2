@@ -7,7 +7,7 @@ import { ListOfBookings, Loader } from '../../Components'
 
 function UserPage() {
   const [cookies] = useCookies(['userProfile'])
-  const [lists, setLists] = useState()
+  const [lists, setLists] = useState([])
   const { data, error, loading } = useQuery(GET_ALL_USERS_BOOKING, {
     variables: {
       uID: cookies.userProfile.id
@@ -16,10 +16,13 @@ function UserPage() {
 
   useEffect(() => {
     !loading && data !== null && setLists(data.bookings.data)
+    !loading && data !== null && console.log(data)
   }, [data])
+
   const removeUser = () => {
 
   }
+
   return (
     <section className='user-page'>
       <div className='container'>
@@ -33,11 +36,14 @@ function UserPage() {
         </div>
 
         <div className='user-booked-times'>
+          <h2>Bokningar</h2>
           <div className='user-booked-times-info'>
             {/* Lista av tider */}
             {loading && <Loader />}
-            {!loading && lists !== undefined &&
+            {!loading && lists.length !== 0 ?
               <ListOfBookings lists={lists} />
+              :
+              <h2>Inga bokade tider!</h2>
             }
           </div>
         </div>
