@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTransition } from "react-transition-state";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Login, Register } from '..';
 import NavigationMenu from './NavigationMenu';
 import { useCookies } from 'react-cookie';
@@ -22,13 +22,12 @@ const Header = () => {
 
   useEffect(() => {
     /** inspiration: https://stackoverflow.com/questions/33443122/display-random-images-using-a-foreach-loop-and-and-one-img-tag */
-    const avartar = document.querySelector('.avartar');
-    console.log(avartar)
+    {/* Loop time baby */ }
     for (let i = 0; i < avartars.length; i++) {
       let randomNum = Math.floor(Math.random() * avartars.length);
       return setProfile(avartars[randomNum]);
     }
-  }, [])
+  }, [avartars])
 
   const [cookies] = useCookies(['userProfile']);
 
@@ -74,7 +73,11 @@ const Header = () => {
   const showLogin = loginEffect === "unmounted";
   const showRegister = registerEffect === "unmounted";
   const showNavigation = navigationEffect === "unmounted";
-  
+
+  let username;
+  if (cookies.userProfile !== undefined) {
+    username = cookies.userProfile.username.replaceAll(' ', '-');
+  }
   return (
     <header>
       <div className='header-wrapper'>
@@ -89,9 +92,10 @@ const Header = () => {
               <span>/</span>
               <button className={`register-button ${login ? 'disable' : ''}`} onClick={() => registerButton()}>Registrera</button>
             </div> :
-            <div className='user-avatar' onClick={() => navigate('/user')}>
-              {/* Loop time baby */}
-              <img className="avartar" src={`${profile.image}.png`} alt="animal" />
+            <div className='user-avatar' onClick={() => navigate(`user/${username}`)}>
+              {profile.image !== undefined &&
+                <img className="avartar" src={`${profile.image}.png`} alt="animal" />
+              }
               <h3>{cookies.userProfile.username}</h3>
             </div>
           }
