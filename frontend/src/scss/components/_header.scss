@@ -59,10 +59,14 @@
         text-shadow: 0 0.25rem 0.1rem rgba(0, 0, 0, 0.25);
       }
       .user-avatar{
-        width: 250px;
+        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
+        cursor: pointer;
+        &:hover{
+          color: grey;
+        }
         img{
           margin-right: 0.5rem;
           filter: invert(100%) sepia(0%) saturate(3953%) hue-rotate(254deg) brightness(115%) contrast(84%);
@@ -101,10 +105,10 @@
   background-color: $darkCherry;
   position: fixed;
   left: 0;
-  border: 1px solid black;
+  border: 0.0625rem solid $leatherBlack;
   border-left: none;
+  border-bottom: none;
   height: calc(100vh - 5rem);
-  /* max-width: 60vw; */
   margin: auto 0;
   padding: 2rem;
   display: flex;
@@ -159,6 +163,7 @@
       color: $boneWhite;
       cursor: pointer;
       text-shadow: 0 0.25rem 0.1rem rgb(0 0 0 / 25%);
+      font-size: $h2;
       transition: all .2s ease-in;
     }
     button:hover{

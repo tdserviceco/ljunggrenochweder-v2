@@ -24,7 +24,9 @@ function NavigationMenu({ state }) {
           <Link to='/'><h2>Om oss</h2></Link>
         </div>
         <div className='logout'>
+          {cookies.userProfile && 
           <button type='button' onClick={logOut}>Logga ut</button>
+          }
         </div>
       </section>
     )

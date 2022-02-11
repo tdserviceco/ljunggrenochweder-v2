@@ -74,7 +74,7 @@ const Header = () => {
   const showLogin = loginEffect === "unmounted";
   const showRegister = registerEffect === "unmounted";
   const showNavigation = navigationEffect === "unmounted";
-  console.log(cookies.userProfile)
+  
   return (
     <header>
       <div className='header-wrapper'>
