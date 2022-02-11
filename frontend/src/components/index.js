@@ -21,3 +21,4 @@ export { default as StepThree } from './steps/StepThree'
 
 export { default as Jumbotron } from './jumbotron/Jumbotron'
 
+export { default as ListOfBooking } from './user/ListOfBooking'
