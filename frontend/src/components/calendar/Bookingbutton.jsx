@@ -42,7 +42,6 @@ const Bookingbutton = ({ time, date, eID }) => {
   }, [data])
 
   useLayoutEffect(() => {
-
     !isBookedQuery.loading && isBookedQuery.data !== null && isBookedQuery.data.bookings.data.length !== 0 ? setHide(false) : setHide(true)
 
   }, [isBookedQuery.data])

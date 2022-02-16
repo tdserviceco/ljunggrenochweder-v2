@@ -8,7 +8,6 @@ const List = ({ list }) => {
   const [removeBookingEvent, { data, loading, error }] = useMutation(DELETE_BOOKING);
 
   const removeThisBooking = (event) => {
-    console.log(event)
     removeBookingEvent({
       variables: {
         bookingID: event
@@ -17,13 +16,9 @@ const List = ({ list }) => {
   }
 
   useEffect(() => {
-    if (error) return console.log(error.message)
-    if (data === undefined) { return }
-    if (!loading && data !== null) {
-      alert("Done")
-      window.location.reload()
-    }
-
+    if(error) return console.log(error.message)
+    if(data === null) return
+    !loading && data !== null && /* alert('Bokning borta'); */ console.log('done')
   }, [data])
 
   return (
