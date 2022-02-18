@@ -1,7 +1,0 @@
-@mixin container($type) {
-  @if ($type) == "grid" {
-    display: grid;
-  } @else {
-    display: flex;
-  }
-}

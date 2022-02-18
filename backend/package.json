@@ -1,31 +1,19 @@
 {
-  "name": "backend",
-  "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
+  "name": "booking-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@strapi/plugin-graphql": "4.0.7",
-    "@strapi/plugin-i18n": "4.0.7",
-    "@strapi/plugin-users-permissions": "4.0.7",
-    "@strapi/strapi": "4.0.7",
-    "sqlite3": "5.0.2"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "d25fd314-27c5-44ca-ac96-6e62ccb60134"
-  },
-  "engines": {
-    "node": ">=12.x.x <=16.x.x",
-    "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "sqlite3": "^5.0.2"
+  }
 }
