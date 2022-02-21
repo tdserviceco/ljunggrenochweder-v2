@@ -42,7 +42,7 @@ const Home = () => {
   useEffect(() => {
     if (backgroundImage.error) return console.log(backgroundImage.error)
     !backgroundImage.loading && getMedia()
-  }, [backgroundImage.data, small, medium, large]);
+  }, [backgroundImage.data, small, medium, large, HD]);
 
   return (
     <main className="home" role="main" style={{ background: `url(${import.meta.env.VITE_APP_DOMAIN}${bg}) center/cover fixed no-repeat` }}>
