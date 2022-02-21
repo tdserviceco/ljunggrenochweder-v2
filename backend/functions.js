@@ -3,16 +3,11 @@ const bcrypt = require('bcryptjs');
 
 const createToken = (value) => {
   const payload = {
-    userId: value._id,
-    role: value.role,
+    data: value,
     exp: (Date.now() / 1000) + (60 * 60)
   }
 
-  const header = {
-    algorithm: process.env.HEADER_ALG
-  }
-
-  const token = jwt.sign(payload, process.env.SECRET, header);
+  const token = jwt.sign(payload, process.env.SECRET);
   return token;
 }
 

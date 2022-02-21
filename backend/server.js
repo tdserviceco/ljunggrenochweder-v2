@@ -14,6 +14,9 @@ app.use('/api/v1', router)
 
 // Routes
 
+// Auth
+const auth = require('./routes/auth');
+
 // Get
 const getUser = require('./routes/getUsers');
 const getUserByID = require('./routes/getUserByID')
@@ -30,17 +33,19 @@ const deleteUser = require('./routes/deleteUser');
 
 router.get('/users', getUser);
 router.get('/user/:id', getUserByID);
-router.get('/users/role/:role', getUsersByRole)
+router.get('/users/role/:role', getUsersByRole);
 
-router.post('/users', postNewUser)
+router.post('/auth', auth);
+router.post('/users', postNewUser);
 
-router.delete('/user/:id', deleteUser)
+router.delete('/user/:id', deleteUser);
 
 // Default response for any other request
-app.use(function (req, res) {
+app.use((req, res) => {
   res.status(404);
 });
 
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Server is listening on port http://localhost:${port}`)
 })

@@ -24,11 +24,7 @@ const getUserByID = (req, res) => {
     })
   });
 
-  db.close((err) => {
-    if (err) {
-      return console.error(err.message);
-    }
-  });
+
 }
 
 module.exports = getUserByID;

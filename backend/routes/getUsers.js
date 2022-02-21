@@ -1,8 +1,8 @@
-var db = require("../db.js")
+let db = require("../db.js")
 
 const users = (req, res) => {
-  var sql = "select * from user"
-  var params = []
+  let sql = "select * from user"
+  let params = []
 
   db.serialize(() => { //Queue this!
     db.all(sql, params, (err, rows) => {
