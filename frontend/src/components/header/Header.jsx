@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Login, Register } from '..';
 import NavigationMenu from './NavigationMenu';
 import { useCookies } from 'react-cookie';
-/* import { Icon } from '@iconify/react'; */
+import { useClickOutside } from '../../assets/custom-hooks';
 
 
 const Header = () => {
@@ -70,6 +70,11 @@ const Header = () => {
     toggleNavigationEffect();
   };
 
+  let domNode = useClickOutside(() => {
+    toggleNavigationEffect(false)
+  })
+
+
   const showLogin = loginEffect === "unmounted";
   const showRegister = registerEffect === "unmounted";
   const showNavigation = navigationEffect === "unmounted";
@@ -79,7 +84,7 @@ const Header = () => {
     username = cookies.userProfile.username.replaceAll(' ', '-');
   }
   return (
-    <header>
+    <header >
       <div className='header-wrapper'>
         <div onClick={() => hamburgerButton()} className={`menu-btn`}>
           <div className={`menu-btn-burger ${hamburger ? 'open' : ''}`}></div>
@@ -102,7 +107,7 @@ const Header = () => {
         </div>
       </div>
 
-      {!showNavigation && <NavigationMenu state={navigationEffect} />}
+      {!showNavigation && <NavigationMenu state={navigationEffect} reference={domNode} />}
       {!showLogin && <Login state={loginEffect} />}
       {!showRegister && <Register state={registerEffect} />}
     </header>
