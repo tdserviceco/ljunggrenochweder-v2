@@ -23,7 +23,7 @@ const Staffs = () => {
   }, [data])
 
   return (
-    <section className={`staffs`}>
+    <section className={`staffs`} id="staffs">
       {loading && <Loader />}
       {!loading && staffData !== null &&
         <>
