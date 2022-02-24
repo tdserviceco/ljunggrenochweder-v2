@@ -21,6 +21,7 @@ const auth = require('./routes/auth');
 const getUser = require('./routes/getUsers');
 const getUserByID = require('./routes/getUserByID')
 const getUsersByRole = require('./routes/getUsersByRole')
+const xml = require('./routes/xml');
 
 // Post
 const postNewUser = require('./routes/postNewUser');
@@ -34,6 +35,8 @@ const deleteUser = require('./routes/deleteUser');
 router.get('/users', getUser);
 router.get('/user/:id', getUserByID);
 router.get('/users/role/:role', getUsersByRole);
+
+router.get('/xml', xml);
 
 router.post('/auth', auth);
 router.post('/users', postNewUser);
