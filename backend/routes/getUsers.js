@@ -12,7 +12,7 @@ const users = (req, res) => {
       }
       res.json({
         "message": "success",
-        "data": rows
+        "value": rows
       })
     });
   })

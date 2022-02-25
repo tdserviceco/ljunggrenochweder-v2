@@ -18,10 +18,10 @@ app.use('/api/v1', router)
 const auth = require('./routes/auth');
 
 // Get
-const getUser = require('./routes/getUsers');
+const getUsers = require('./routes/getUsers');
 const getUserByID = require('./routes/getUserByID')
 const getUsersByRole = require('./routes/getUsersByRole')
-const xml = require('./routes/xml');
+// const xml = require('./routes/xml');
 
 // Post
 const postNewUser = require('./routes/postNewUser');
@@ -32,11 +32,11 @@ const postNewUser = require('./routes/postNewUser');
 const deleteUser = require('./routes/deleteUser');
 
 
-router.get('/users', getUser);
+router.get('/users', getUsers);
 router.get('/user/:id', getUserByID);
 router.get('/users/role/:role', getUsersByRole);
 
-router.get('/xml', xml);
+// router.get('/xml', xml);
 
 router.post('/auth', auth);
 router.post('/users', postNewUser);

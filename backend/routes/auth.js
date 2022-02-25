@@ -24,7 +24,7 @@ const auth = (req, res) => {
       else {
         return res.status(400).json({
           "message": "error",
-          "data": "Password or Email is invalid!"
+          "value": "Password or Email is invalid!"
         })
       }
     });

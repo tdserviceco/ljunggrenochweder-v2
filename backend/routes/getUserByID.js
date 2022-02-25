@@ -16,10 +16,10 @@ const getUserByID = (req, res) => {
       }
       return rows ? res.status(200).json({
         "message": "success",
-        "data": rows
+        "value": rows
       }) : res.status(400).json({
         "message": "error",
-        "data": "Cant get that specific id"
+        "value": "Cant get that specific id"
       })
     })
   });

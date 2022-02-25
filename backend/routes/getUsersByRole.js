@@ -14,10 +14,10 @@ const getUsersByRole = (req, res) => {
     }
     return rows ? res.status(200).json({
       "message": "success",
-      "data": rows
+      "value": rows
     }) : res.status(400).json({
       "message": "error",
-      "data": "Cant get that specific role"
+      "value": "Cant get that specific role"
     })
   });
 

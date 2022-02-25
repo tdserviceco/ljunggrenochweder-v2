@@ -9,7 +9,7 @@ const getUsersByRole = (req, res) => {
       if (err) return res.status(400).json({ "error": err.message });
       return res.status(200).json({
         "message": "success",
-        "data": `New user been added`
+        "value": `New user been added`
       })
     })
   })
