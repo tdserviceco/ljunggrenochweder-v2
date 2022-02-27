@@ -30,6 +30,11 @@
     padding: 5rem;
   }
 
+  .service-container{
+    margin: 0 2rem ;
+  }
+
+
   .staffs {
     .containers {
       grid-template-columns: repeat(2, 1fr);
@@ -96,6 +101,10 @@
 
   .booking {
     padding: 5rem 15rem;
+  }
+
+  .service-container{
+    margin: 0 7rem ;
   }
 
   .staffs {
