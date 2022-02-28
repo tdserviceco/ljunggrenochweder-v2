@@ -4,18 +4,21 @@ const PriceList = ({ allServices }) => {
   const mapServices = () => {
     return allServices.map((service, key) => {
       return (
-        <li key={key}>{service.attributes.name} - {service.attributes.price}kr</li>
+        <>
+          <h3 className='service-name' key={key}>{service.attributes.name}</h3>
+          <p className='service-price'>{service.attributes.price}kr</p>
+        </>
       )
     })
   }
 
   return (
-    <>
-      <h2>Lista av tjänster</h2>
-      <ul role="list">
+    <div className='service-container'>
+      <h2 className='service-title'>Lista av tjänster</h2>
+      <div className='service-info' role="list">
         {mapServices()}
-      </ul>
-    </>
+      </div>
+    </div>
   );
 };
 

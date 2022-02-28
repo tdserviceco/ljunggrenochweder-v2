@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
-function NavigationMenu({ state, reference }) {
+function NavigationMenu({ state, /* reference */ }) {
 
   let navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(['userProfile']);
@@ -14,7 +14,7 @@ function NavigationMenu({ state, reference }) {
 
 
   return (
-    <section className={`navigation-menu ${state}`} ref={reference}>
+    <section className={`navigation-menu ${state}`}/*  ref={reference} */>
       <div className='title'>
         <h2>Ljunggren & Weder</h2>
       </div>

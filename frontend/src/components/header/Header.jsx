@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Login, Register } from '..';
 import NavigationMenu from './NavigationMenu';
 import { useCookies } from 'react-cookie';
-import { useClickOutside } from '../../assets/custom-hooks';
+/* import { useClickOutside } from '../../assets/custom-hooks'; */
 
 
 const Header = () => {
@@ -70,9 +70,9 @@ const Header = () => {
     toggleNavigationEffect();
   };
 
-  let domNode = useClickOutside(() => {
+  /* let domNode = useClickOutside(() => {
     toggleNavigationEffect(false)
-  })
+  }) */
 
 
   const showLogin = loginEffect === "unmounted";
@@ -107,7 +107,7 @@ const Header = () => {
         </div>
       </div>
 
-      {!showNavigation && <NavigationMenu state={navigationEffect} reference={domNode} />}
+      {!showNavigation && <NavigationMenu state={navigationEffect} /* reference={domNode} */ />}
       {!showLogin && <Login state={loginEffect} />}
       {!showRegister && <Register state={registerEffect} />}
     </header>
