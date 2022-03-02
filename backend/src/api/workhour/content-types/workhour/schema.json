@@ -17,9 +17,6 @@
       "repeatable": true,
       "component": "schedule.schedule"
     },
-    "week": {
-      "type": "string"
-    },
     "worker": {
       "type": "relation",
       "relation": "manyToOne",
