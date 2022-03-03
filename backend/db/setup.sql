@@ -19,3 +19,9 @@ CREATE TABLE IF NOT EXISTS schedule (
 	staff_id INTEGER,
 	schedule TEXT
 );
+
+CREATE TABLE IF NOT EXISTS services (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	staff_id INTEGER,
+	service_name TEXT
+);

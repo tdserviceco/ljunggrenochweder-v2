@@ -1,5 +1,8 @@
 -- SQLite
-SELECT schedule, name  
+SELECT schedule, service_name
 FROM schedule 
 INNER JOIN staff 
-WHERE staff.id = schedule.staff_id
+ON schedule.staff_id = staff.id
+INNER JOIN services
+ON services.staff_id = staff.id
+AND staff.id = 1
