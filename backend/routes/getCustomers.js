@@ -1,7 +1,7 @@
 let db = require("../db.js")
 
-const users = (req, res) => {
-  let sql = "select * from user"
+const getCustomers = (req, res) => {
+  let sql = "select * from customers"
   let params = []
 
   db.serialize(() => { //Queue this!
@@ -18,4 +18,4 @@ const users = (req, res) => {
   })
 }
 
-module.exports = users;
+module.exports = getCustomers;

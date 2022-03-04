@@ -1,7 +1,7 @@
 let db = require("../db.js")
 const { hashGenerator } = require('../functions');
-const getUsersByRole = (req, res) => {
-  let sql = 'INSERT INTO user (name, username, email, password, role) VALUES (?,?,?,?,?)'
+const postNewCustomer = (req, res) => {
+  let sql = 'INSERT INTO customers (name, username, email, password, phone) VALUES (?,?,?,?,?)'
   let params = [req.body.name, req.body.username, req.body.email, hashGenerator(req.body.password), 'customer']
 
   db.serialize(() => { //Queue this!
@@ -21,6 +21,6 @@ const getUsersByRole = (req, res) => {
   });
 }
 
-module.exports = getUsersByRole;
+module.exports = postNewCustomer;
 
 

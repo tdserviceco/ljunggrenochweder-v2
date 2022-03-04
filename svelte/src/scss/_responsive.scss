@@ -1,0 +1,49 @@
+@use "./" as *;
+
+body {
+  background-color: green;
+}
+
+@media (min-width: 320px) {
+}
+@media (min-width: 600px) {
+  body {
+    background-color: yellow;
+  }
+}
+@media (min-width: 720px) {
+}
+@media (min-width: 920px) {
+}
+@media (min-width: 1024px) {
+  body {
+    background-color: red;
+  }
+}
+@media (min-width: 1366px) {
+}
+@media (min-width: 1440px) {
+  body {
+    background-color: pink;
+  }
+}
+@media (min-width: 1920px) {
+  body {
+    background-color: saddlebrown;
+  }
+}
+@media (min-width: 2560px) {
+  body {
+    background-color: brown;
+  }
+}
+@media (min-width: 3840px) {
+  //4k UDHTV
+  picture,
+  img {
+    aspect-ratio: 16/9;
+  }
+}
+@media (min-width: 4096px) {
+  //True 4k
+}

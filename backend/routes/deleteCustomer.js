@@ -1,6 +1,6 @@
 let db = require("../db.js")
-const getUsersByRole = (req, res) => {
-  let sql = 'DELETE FROM user WHERE id=?'
+const deleteCustomer = (req, res) => {
+  let sql = 'DELETE FROM customer WHERE id=?'
   let params = [req.params.id];
 
   db.serialize(() => { //Queue this!
@@ -20,6 +20,6 @@ const getUsersByRole = (req, res) => {
   });
 }
 
-module.exports = getUsersByRole;
+module.exports = deleteCustomer;
 
 

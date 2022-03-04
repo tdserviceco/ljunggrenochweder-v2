@@ -1,0 +1,5 @@
+export { default as Home } from './home.svelte'
+export { default as Login } from './login.svelte'
+export { default as Register } from './register.svelte'
+export { default as Dashboard } from './dashboard.svelte'
+export { default as PageNotFound } from './pageNotFound.svelte'

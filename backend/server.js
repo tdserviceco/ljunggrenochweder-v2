@@ -9,7 +9,9 @@ dotenv.config();
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  credentials: true
+}));
 app.use('/api/v1', router)
 
 // Routes
@@ -18,30 +20,30 @@ app.use('/api/v1', router)
 const auth = require('./routes/auth');
 
 // Get
-const getUsers = require('./routes/getUsers');
-const getUserByID = require('./routes/getUserByID')
-const getUsersByRole = require('./routes/getUsersByRole')
+const getCustomers = require('./routes/getCustomers');
+const getStaffs = require('./routes/getStaffs');
+
+
 const xml = require('./routes/xml');
 
 // Post
-const postNewUser = require('./routes/postNewUser');
+const postNewCustomer = require('./routes/postNewCustomer');
 
 // Put
 
 // Delete
-const deleteUser = require('./routes/deleteUser');
+const deleteCustomer = require('./routes/deleteCustomer');
 
 
-router.get('/users', getUsers);
-router.get('/user/:id', getUserByID);
-router.get('/users/role/:role', getUsersByRole);
+router.get('/customer', getCustomers);
+router.get('/staff', getStaffs);
 
 router.get('/xml', xml);
 
-router.post('/auth', auth);
-router.post('/users', postNewUser);
+router.post('/auth/:role', auth);
+router.post('/customer', postNewCustomer);
 
-router.delete('/user/:id', deleteUser);
+router.delete('/customer/:id', deleteCustomer);
 
 // Default response for any other request
 app.use((req, res) => {
@@ -50,5 +52,5 @@ app.use((req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Server is listening on port http://localhost:${port}`)
+  console.log("Server running on port http://localhost:%PORT%".replace("%PORT%", port))
 })
