@@ -23,4 +23,6 @@
 
 {#if $authentication}
   <Dashboard />
+{:else}
+  <h1>Please login!</h1>
 {/if}
