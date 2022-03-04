@@ -1,6 +1,6 @@
 let db = require("../db.js")
 const deleteCustomer = (req, res) => {
-  let sql = 'DELETE FROM customer WHERE id=?'
+  let sql = 'DELETE FROM users WHERE id=?'
   let params = [req.params.id];
 
   db.serialize(() => { //Queue this!

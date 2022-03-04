@@ -1,9 +1,23 @@
 <script>
   import Icon from "@iconify/svelte";
-  import { token_staff, token_customer } from "../../stores.js";
-
+  import { logged_in_data, authentication } from "../../stores.js";
+  const RemoveAuth = async (url) => {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    return await response.json();
+  };
   const LogoutStaff = () => {
-    token_staff.set(localStorage.removeItem("token_staff"));
+    console.log("loggout in progress...");
+    RemoveAuth("http://localhost:5100/api/v1/logout").then((res) => {
+      console.log(res.message);
+      authentication.set(false);
+      logged_in_data.set(localStorage.removeItem("data"));
+    });
   };
 </script>
 
@@ -14,23 +28,21 @@
         <li>
           <a href="/">Home</a>
         </li>
-        <li>
-          {#if $token_staff}
-            <a target="_self" href="/#/dashboard">Dashboard</a>
-            <button type="button" on:click={LogoutStaff}>Logout</button>
-          {/if}
-        </li>
-        <li>
-          {#if $token_customer}
+        {#if $authentication}
+          <li>
             <a target="_self" href="/#/dashboard">Profile</a>
+          </li>
+          <li>
             <button type="button" on:click={LogoutStaff}>Logout</button>
-          {:else}
+          </li>
+        {:else}
+          <li>
             <a target="_self" href="/#/login">Login</a>
-          {/if}
-        </li>
-        <li>
-          <a target="_self" href="/#/register">Register</a>
-        </li>
+          </li>
+          <li>
+            <a target="_self" href="/#/register">Register</a>
+          </li>
+        {/if}
       </ul>
     </nav>
   </div>

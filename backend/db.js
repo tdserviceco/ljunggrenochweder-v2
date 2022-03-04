@@ -10,7 +10,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
     throw err
   } else {
     console.log('Connected to the SQLite database.')
-    db.run(`CREATE TABLE staffs (
+    db.run(`CREATE TABLE users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name text, 
             email text UNIQUE, 
@@ -25,29 +25,13 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         } else {
           console.log('Creating table');
           // Table just created, creating some rows
-          let insert = 'INSERT INTO staffs (name, email, password, role) VALUES (?,?,?,?)'
+          let insert = 'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)'
           db.run(insert, ["tommy danielsson", "tdserviceco@gmail.com", hashGenerator("admin123456"), "Super admin"])
           db.run(insert, ["tim varvikko", "tim.varvikko59@gmail.com", hashGenerator("admin123456"), "Super admin"])
-          console.log('Table with name of: staffs, has been created with two super admins')
+          console.log('Table with name of: users, has been created with two super admins')
         }
       });
 
-    db.run(`CREATE TABLE customers (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            first_name TEXT NOT NULL,
-            last_name TEXT NOT NULL,
-            password TEXT NOT NULL,
-            email TEXT NOT NULL UNIQUE,
-            phone TEXT NOT NULL
-            )`,
-      (err) => {
-        if (err) {
-          // Table already created
-          console.log('Table: customers, already exist');
-        } else {
-          console.log('Table: customers, created')
-        }
-      })
 
     db.run(`CREATE TABLE staff_schedule (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

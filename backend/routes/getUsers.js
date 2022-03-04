@@ -1,7 +1,7 @@
 let db = require("../db.js")
 
 const getCustomers = (req, res) => {
-  let sql = "select * from customers"
+  let sql = "select * from users"
   let params = []
 
   db.serialize(() => { //Queue this!
@@ -12,7 +12,7 @@ const getCustomers = (req, res) => {
       }
       res.json({
         "message": "success",
-        "value": rows
+        "data": rows
       })
     });
   })

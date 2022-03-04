@@ -4,46 +4,53 @@ const app = express();
 const port = 5100;
 const router = express.Router();
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser')
 dotenv.config();
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-  credentials: true
+  credentials: true,
+  origin: ['http://localhost:3000']
 }));
+app.use(cookieParser())
 app.use('/api/v1', router)
-
 // Routes
 
 // Auth
 const auth = require('./routes/auth');
 
-// Get
-const getCustomers = require('./routes/getCustomers');
-const getStaffs = require('./routes/getStaffs');
+// Login
+const login = require('./routes/login');
 
+// Logout
+const logout = require('./routes/logout');
+
+// Get
+const getUsers = require('./routes/getUsers');
 
 const xml = require('./routes/xml');
 
 // Post
-const postNewCustomer = require('./routes/postNewCustomer');
+const postNewUser = require('./routes/postNewUser');
 
 // Put
 
 // Delete
-const deleteCustomer = require('./routes/deleteCustomer');
+const deleteUser = require('./routes/deleteUser');
 
 
-router.get('/customer', getCustomers);
-router.get('/staff', getStaffs);
+router.get('/auth', auth)
+router.get('/users', getUsers);
 
 router.get('/xml', xml);
 
-router.post('/auth/:role', auth);
-router.post('/customer', postNewCustomer);
+router.post('/login', login);
+router.post('/logout', logout);
+router.post('/users', postNewUser);
 
-router.delete('/customer/:id', deleteCustomer);
+router.delete('/users/:id', deleteUser);
 
 // Default response for any other request
 app.use((req, res) => {

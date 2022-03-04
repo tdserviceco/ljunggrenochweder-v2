@@ -1,16 +1,23 @@
 <script>
   import { onMount } from "svelte";
+  import { authentication } from "../stores.js";
 
   onMount(async () => {
-    const response = await fetch("http://localhost:5100/api/v1/staff", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    try {
+      const response = await fetch("http://localhost:5100/api/v1/auth", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
 
-    const content = await response.json();
-    console.log("content: ", content);
+      const content = await response.json();
+      console.log(`Welcome back ${content.data.name}`);
+      authentication.set(true);
+    } catch (e) {
+      console.log("You're not logged in");
+      authentication.set(false);
+    }
   });
 </script>
 

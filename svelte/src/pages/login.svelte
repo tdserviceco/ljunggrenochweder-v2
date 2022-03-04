@@ -1,10 +1,17 @@
 <script>
+  import { logged_in_data, authentication } from "../stores.js";
+  import { Dashboard, ErrorSign } from "../components";
+
+  let errorSign = false;
+  let message;
+
   const authLogin = async (url, data) => {
     const response = await fetch(url, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
     });
     return response.json();
@@ -21,20 +28,33 @@
       email: formUser.email,
       password: formUser.password,
     };
-    authLogin("http://localhost:5100/api/v1/auth/customer", data).then(
-      (res) => {
-        if (res.status === 200) {
-          console.log("success:", res.token);
-        } else {
-          console.error("failed:", res.message);
-        }
+
+    authLogin("http://localhost:5100/api/v1/login", data).then((res) => {
+      if (res.status === 200) {
+        console.dir("success:", res.data);
+        logged_in_data.set(
+          localStorage.setItem("data", JSON.stringify(res.data))
+        );
+        window.location.href = "/#/dashboard";
+      } else {
+        errorSign = true;
+        message = res.message;
+        console.error("failed:", res.message);
       }
-    );
+    });
+  };
+
+  const closeErrorSign = (clickEvent) => {
+    if (clickEvent) {
+      return (errorSign = clickEvent);
+    }
+
+    return (errorSign = false);
   };
 </script>
 
 <svelte:head>
-  <title>Login to booking</title>
+  <title>Login to admin dashboard</title>
 </svelte:head>
 
 <form on:submit|preventDefault={handleSubmit}>
@@ -53,3 +73,7 @@
   </label>
   <button type="submit">Login</button>
 </form>
+
+{#if errorSign}
+  <ErrorSign type="error" {message} {closeErrorSign} />
+{/if}

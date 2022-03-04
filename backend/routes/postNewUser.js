@@ -1,7 +1,7 @@
 let db = require("../db.js")
 const { hashGenerator } = require('../functions');
-const postNewCustomer = (req, res) => {
-  let sql = 'INSERT INTO customers (name, username, email, password, phone) VALUES (?,?,?,?,?)'
+const postNewUser = (req, res) => {
+  let sql = 'INSERT INTO users (name, username, email, password, phone) VALUES (?,?,?,?,?)'
   let params = [req.body.name, req.body.username, req.body.email, hashGenerator(req.body.password), 'customer']
 
   db.serialize(() => { //Queue this!
@@ -9,7 +9,7 @@ const postNewCustomer = (req, res) => {
       if (err) return res.status(400).json({ "error": err.message });
       return res.status(200).json({
         "message": "success",
-        "value": `New user been added`
+        "data": `New user been added`
       })
     })
   })
@@ -21,6 +21,6 @@ const postNewCustomer = (req, res) => {
   });
 }
 
-module.exports = postNewCustomer;
+module.exports = postNewUser;
 
 
