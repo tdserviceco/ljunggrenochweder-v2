@@ -15,12 +15,12 @@
       console.log("content: ", content);
       authentication.set(true);
     } catch (e) {
+      console.log("You're not logged in");
       authentication.set(false);
-      window.location.href = "/";
     }
   });
 </script>
 
-{#if authentication}
+{#if $authentication}
   <Dashboard />
 {/if}

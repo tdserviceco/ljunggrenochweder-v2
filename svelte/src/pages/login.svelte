@@ -35,6 +35,7 @@
         logged_in_data.set(
           localStorage.setItem("data", JSON.stringify(res.data))
         );
+        authentication.set(true);
         window.location.href = "/#/dashboard";
       } else {
         errorSign = true;

@@ -1,6 +1,8 @@
 <script>
   import Icon from "@iconify/svelte";
   import { logged_in_data, authentication } from "../../stores.js";
+  let auth = false;
+  authentication.subscribe((a) => (auth = a));
   const RemoveAuth = async (url) => {
     const response = await fetch(url, {
       method: "POST",
@@ -9,15 +11,13 @@
       },
       credentials: "include",
     });
-    return await response.json();
   };
   const LogoutStaff = () => {
     console.log("loggout in progress...");
-    RemoveAuth("http://localhost:5100/api/v1/logout").then((res) => {
-      console.log(res.message);
-      authentication.set(false);
-      logged_in_data.set(localStorage.removeItem("data"));
-    });
+    logged_in_data.set(localStorage.removeItem("data"));
+    RemoveAuth("http://localhost:5100/api/v1/logout").then(
+      () => (window.location.href = "/")
+    );
   };
 </script>
 
@@ -28,7 +28,7 @@
         <li>
           <a href="/">Home</a>
         </li>
-        {#if $authentication}
+        {#if auth}
           <li>
             <a target="_self" href="/#/dashboard">Profile</a>
           </li>
